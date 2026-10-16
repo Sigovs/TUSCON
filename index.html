@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tucson Classic Motor Co. — Vintage &amp; Specialty Vehicle Sales</title>
+<meta name="description" content="Vintage and specialty vehicle sales on Grant Road, Tucson. Over 30 years experience in the classic car industry. We buy classic and special-interest vehicles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Literata:opsz,wght@7..72,400;7..72,500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="stylesheet" href="vendor/lenis.css">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Compact bar: appears only after the hero has left the screen, so no solid edge ever crosses the photograph -->
+<div class="bar" data-bar aria-hidden="true">
+  <div class="bar__in">
+    <a class="bar__logo" href="#top" tabindex="-1"><img src="assets/img/logo.png" alt="" width="60" height="49"></a>
+    <nav class="bar__nav" aria-label="Primary (compact)">
+      <a href="https://tucsonclassics.com/inventory/" tabindex="-1">Inventory</a>
+      <a href="https://tucsonclassics.com/sold-vehicles/" tabindex="-1">Sold</a>
+      <a href="#financing" tabindex="-1">Financing</a>
+      <a href="#about" tabindex="-1">About</a>
+      <a href="#visit" tabindex="-1">Visit</a>
+    </nav>
+    <a class="btn btn--y bar__sell" href="https://tucsonclassics.com/sell-your-car/" tabindex="-1">Sell your car</a>
+    <button class="menu-btn bar__menu" type="button" data-menu-open tabindex="-1" aria-label="Open menu">Menu</button>
+  </div>
+</div>
+
+<header class="site-head" id="top">
+  <a class="site-head__logo" href="#top"><img src="assets/img/logo.png" alt="Tucson Classic Motor Co." width="122" height="99"></a>
+  <nav class="site-head__nav" aria-label="Primary">
+    <a href="https://tucsonclassics.com/inventory/">Inventory</a>
+    <a href="https://tucsonclassics.com/sold-vehicles/">Sold</a>
+    <a href="#financing">Financing</a>
+    <a href="#about">About</a>
+    <a href="#visit">Visit</a>
+    <a class="btn btn--y" href="https://tucsonclassics.com/sell-your-car/">Sell your car</a>
+  </nav>
+  <div class="site-head__mobile">
+    <a class="btn btn--y btn--sm" href="https://tucsonclassics.com/sell-your-car/">Sell your car</a>
+    <button class="menu-btn" type="button" data-menu-open aria-haspopup="dialog" aria-controls="menu">Menu</button>
+  </div>
+</header>
+
+<dialog class="menu" id="menu" aria-label="Menu" data-lenis-prevent>
+  <div class="menu__top">
+    <img src="assets/img/logo.png" alt="" width="68" height="55">
+    <button class="menu-btn" type="button" data-menu-close>Close</button>
+  </div>
+  <nav class="menu__nav" aria-label="Menu">
+    <a href="https://tucsonclassics.com/inventory/">Current inventory</a>
+    <a href="https://tucsonclassics.com/sold-vehicles/">Sold</a>
+    <a href="#financing" data-menu-close>Financing</a>
+    <a href="#about" data-menu-close>About</a>
+    <a href="#visit" data-menu-close>Visit the showroom</a>
+  </nav>
+  <a class="btn btn--y btn--block" href="https://tucsonclassics.com/sell-your-car/">Sell your car</a>
+  <p class="menu__contact"><a href="tel:+15203509332">520-350-9332</a><br><a href="mailto:Info@TucsonClassics.com">Info@TucsonClassics.com</a></p>
+</dialog>
+
+<main id="main">
+  <section class="hero" aria-label="Tucson Classic Motor Co. on Grant Road">
+    <picture class="hero__ph">
+      <img src="assets/img/hero-1600.jpg"
+           srcset="assets/img/hero-900.jpg 900w, assets/img/hero-1600.jpg 1600w, assets/img/hero-2400.jpg 2400w"
+           sizes="100vw" width="2400" height="1800"
+           alt="A green 1930s Ford parked outside the Tucson Classic Motor Co. building on Grant Road, beside the dealership's green sign">
+    </picture>
+    <form class="search" action="https://tucsonclassics.com/inventory/" method="get" data-search>
+      <h2 class="lbl search__title" id="search-title">Search inventory</h2>
+      <div class="search__fields" role="group" aria-labelledby="search-title">
+        <label class="field">
+          <span class="sr">Make</span>
+          <select name="make">
+            <option value="">Any make</option>
+            <option value="ac">AC</option>
+            <option value="allard">Allard</option>
+            <option value="am-general">AM General</option>
+            <option value="ariel">Ariel</option>
+            <option value="aston-martin">Aston Martin</option>
+            <option value="audi">Audi</option>
+            <option value="avanti">Avanti</option>
+            <option value="bmw">BMW</option>
+            <option value="brockhouse">Brockhouse</option>
+            <option value="bsa">BSA</option>
+            <option value="buick">Buick</option>
+            <option value="cadillac">Cadillac</option>
+            <option value="chevrolet">Chevrolet</option>
+            <option value="chris-craft">Chris-Craft</option>
+            <option value="chrysler">Chrysler</option>
+            <option value="desoto">DeSoto</option>
+            <option value="detomaso">DeTomaso</option>
+            <option value="diamond-t">Diamond T</option>
+            <option value="dodge">Dodge</option>
+            <option value="ducati">Ducati</option>
+            <option value="essex">Essex</option>
+            <option value="facel-vega">Facel Vega</option>
+            <option value="ferrari">Ferrari</option>
+            <option value="ford">Ford</option>
+            <option value="gmc">GMC</option>
+            <option value="harley-davidson">Harley-Davidson</option>
+            <option value="hillman">Hillman</option>
+            <option value="honda">Honda</option>
+            <option value="indian">Indian</option>
+            <option value="international">International</option>
+            <option value="jaguar">Jaguar</option>
+            <option value="jeep">Jeep</option>
+            <option value="jensen">Jensen</option>
+            <option value="kurtis">Kurtis</option>
+            <option value="land-rover">Land Rover</option>
+            <option value="lincoln">Lincoln</option>
+            <option value="mazda">Mazda</option>
+            <option value="mercedes-benz">Mercedes-Benz</option>
+            <option value="mercury">Mercury</option>
+            <option value="mg">MG</option>
+            <option value="nissan">Nissan</option>
+            <option value="oldsmobile">Oldsmobile</option>
+            <option value="other">Other</option>
+            <option value="packard">Packard</option>
+            <option value="plymouth">Plymouth</option>
+            <option value="pontiac">Pontiac</option>
+            <option value="porsche">Porsche</option>
+            <option value="ram">Ram</option>
+            <option value="rolls-royce">Rolls-Royce</option>
+            <option value="shelby">Shelby</option>
+            <option value="studebaker">Studebaker</option>
+            <option value="tesla">Tesla</option>
+            <option value="triumph">Triumph</option>
+            <option value="volkswagen">Volkswagen</option>
+            <option value="willys">Willys</option>
+            <option value="willys-overland">Willys-Overland</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="sr">Year</span>
+          <select name="decade" data-decade>
+            <option value="">Any year</option>
+            <option value="1900-1929">1900s – 1920s</option>
+            <option value="1930-1939">1930s</option>
+            <option value="1940-1949">1940s</option>
+            <option value="1950-1959">1950s</option>
+            <option value="1960-1969">1960s</option>
+            <option value="1970-1979">1970s</option>
+            <option value="1980-1999">1980s – 1990s</option>
+            <option value="2000-2030">2000 and newer</option>
+          </select>
+        </label>
+        <label class="field field--wide">
+          <span class="sr">Model</span>
+          <input type="text" name="model" placeholder="Model, e.g. Coupe" autocomplete="off">
+        </label>
+        <input type="hidden" name="post_type" value="vehicle">
+        <button class="btn btn--ink field--wide" type="submit">Search</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="intro wrap">
+    <h1 class="intro__h">Vintage and specialty vehicle sales in Tucson.</h1>
+    <p class="intro__p">Over 30 years experience in the classic car industry. We know our cars because we own our cars.</p>
+  </section>
+
+  <section class="inv" aria-labelledby="inv-title">
+    <div class="inv__head wrap">
+      <h2 class="lbl" id="inv-title">Current inventory</h2>
+      <div class="inv__arrows">
+        <button class="arrow" type="button" data-rail-prev aria-label="Previous cars" aria-controls="rail">←</button>
+        <button class="arrow" type="button" data-rail-next aria-label="Next cars" aria-controls="rail">→</button>
+      </div>
+    </div>
+    <ul class="rail" id="rail" data-rail tabindex="0" aria-label="Current inventory, scroll sideways">
+      <li class="card">
+        <a class="card__a" href="https://tucsonclassics.com/inventory/1946-ford-coupe-blown-hh-flathead/">
+          <span class="card__img"><img src="assets/img/car-1946-ford-coupe.jpg" alt="" loading="lazy" width="900" height="600"></span>
+          <span class="card__y">1946 Ford</span>
+          <span class="card__n">Coupe, blown H&amp;H flathead</span>
+          <span class="card__row"><b class="card__price">$69,500</b><span class="card__go" aria-hidden="true">View car →</span></span>
+        </a>
+      </li>
+      <li class="card">
+        <a class="card__a" href="https://tucsonclassics.com/inventory/1912-marsh-metz/">
+          <span class="card__img"><img src="assets/img/car-1912-marsh-metz.jpg" alt="" loading="lazy" width="900" height="600"></span>
+          <span class="card__y">1912 Marsh Metz</span>
+          <span class="card__n">Motorcycle</span>
+          <span class="card__row"><b class="card__price">$115,000</b><span class="card__go" aria-hidden="true">View car →</span></span>
+        </a>
+      </li>
+      <li class="card">
+        <a class="card__a" href="https://tucsonclassics.com/inventory/1956-oldsmobile-88/">
+          <span class="card__img"><img src="assets/img/car-1956-oldsmobile-88.jpg" alt="" loading="lazy" width="900" height="600"></span>
+          <span class="card__y">1956 Oldsmobile</span>
+          <span class="card__n">88, 28k original miles</span>
+          <span class="card__row"><b class="card__price">$39,900</b><span class="card__go" aria-hidden="true">View car →</span></span>
+        </a>
+      </li>
+      <li class="card">
+        <a class="card__a" href="https://tucsonclassics.com/inventory/1932-ford-blown-original-henry-steel-3-window-coupe/">
+          <span class="card__img"><img src="assets/img/car-1932-ford-3-window.jpg" alt="" loading="lazy" width="900" height="600"></span>
+          <span class="card__y">1932 Ford</span>
+          <span class="card__n">Blown 3-window coupe, original Henry steel</span>
+          <span class="card__row"><b class="card__price">$59,500</b><span class="card__go" aria-hidden="true">View car →</span></span>
+        </a>
+      </li>
+      <li class="card">
+        <a class="card__a" href="https://tucsonclassics.com/inventory/1954-hillegass-sprint-car/">
+          <span class="card__img"><img src="assets/img/car-1954-hillegass.jpg" alt="" loading="lazy" width="900" height="600"></span>
+          <span class="card__y">1954 Hillegass</span>
+          <span class="card__n">Sprint car</span>
+          <span class="card__row"><b class="card__price">$39,500</b><span class="card__go" aria-hidden="true">View car →</span></span>
+        </a>
+      </li>
+      <li class="card">
+        <a class="card__a" href="https://tucsonclassics.com/inventory/1963-ford-falcon-coming-soon/">
+          <span class="card__img"><img src="assets/img/car-1963-ford-falcon.jpg" alt="" loading="lazy" width="900" height="600"></span>
+          <span class="card__y">1963 Ford Falcon</span>
+          <span class="card__n">Futura 260 V8</span>
+          <span class="card__row"><b class="card__price">$16,500</b><span class="card__go" aria-hidden="true">View car →</span></span>
+        </a>
+      </li>
+      <li class="card">
+        <a class="card__a" href="https://tucsonclassics.com/inventory/1983-don-yenko-imsa-camaro/">
+          <span class="card__img"><img src="assets/img/car-1983-yenko-camaro.jpg" alt="" loading="lazy" width="900" height="600"></span>
+          <span class="card__y">1983 Chevrolet</span>
+          <span class="card__n">Don Yenko IMSA Camaro</span>
+          <span class="card__row"><b class="card__price">$49,500</b><span class="card__go" aria-hidden="true">View car →</span></span>
+        </a>
+      </li>
+      <li class="card">
+        <a class="card__a" href="https://tucsonclassics.com/inventory/1954-bsa-a7-shooting-star-daytona-race-bike/">
+          <span class="card__img"><img src="assets/img/car-1954-bsa-a7.jpg" alt="" loading="lazy" width="900" height="600"></span>
+          <span class="card__y">1954 BSA</span>
+          <span class="card__n">A7 Shooting Star Daytona race bike</span>
+          <span class="card__row"><b class="card__price">$44,500</b><span class="card__go" aria-hidden="true">View car →</span></span>
+        </a>
+      </li>
+      <li class="card">
+        <a class="card__a" href="https://tucsonclassics.com/inventory/1973-lincoln-town-coupe-coming-soon/">
+          <span class="card__img"><img src="assets/img/car-1973-lincoln.jpg" alt="" loading="lazy" width="900" height="600"></span>
+          <span class="card__y">1973 Lincoln</span>
+          <span class="card__n">Town Coupe, 25k miles</span>
+          <span class="card__row"><b class="card__price">$35,000</b><span class="card__go" aria-hidden="true">View car →</span></span>
+        </a>
+      </li>
+      <li class="card">
+        <a class="card__a" href="https://tucsonclassics.com/inventory/1968-gto-coming-soon/">
+          <span class="card__img"><img src="assets/img/car-1968-gto.jpg" alt="" loading="lazy" width="900" height="600"></span>
+          <span class="card__y">1968 Pontiac</span>
+          <span class="card__n">GTO</span>
+          <span class="card__row"><span class="chip">Arriving soon</span><span class="card__go" aria-hidden="true">Details →</span></span>
+        </a>
+      </li>
+    </ul>
+    <div class="wrap inv__cta"><a class="btn btn--line" href="https://tucsonclassics.com/inventory/">View current inventory</a></div>
+  </section>
+
+  <section class="sell" aria-labelledby="sell-title">
+    <div class="sell__c">
+      <p class="lbl sell__k">We buy cars</p>
+      <h2 class="sell__h" id="sell-title">Sell your car.</h2>
+      <p class="sell__p">We are always looking for classic and special-interest vehicles to purchase. Tell us about yours and send a few photographs.</p>
+      <div><a class="btn btn--ink" href="https://tucsonclassics.com/sell-your-car/">Tell us about your car</a></div>
+      <p class="sell__call">Or call <a href="tel:+15203509332">520-350-9332</a></p>
+    </div>
+    <img class="sell__img" src="assets/img/showroom-sell.jpg" alt="Inside the Tucson Classic Motor Co. showroom, with a black 1960 Chevrolet Biscayne and vintage service-station signs" loading="lazy" width="1400" height="933">
+  </section>
+
+  <section class="about wrap" id="about" aria-labelledby="about-title">
+    <div class="about__c">
+      <p class="lbl">About</p>
+      <h2 class="sec-h" id="about-title">Tucson Classic Motor Co.</h2>
+      <p class="about__p">We are always looking for Classic and Special Interest vehicles to purchase, please submit yours on our easy online form. We sell cars all over the world and are happy to assist with worldwide shipping to your door, email for a quote. Check out our financing page for quick online approval in minutes.</p>
+      <dl class="facts">
+        <div><dt>Showroom</dt><dd>2540 E. Grant Rd., Tucson</dd></div>
+        <div><dt>Visits</dt><dd>By appointment</dd></div>
+        <div><dt>Shipping</dt><dd>Worldwide, quote by email</dd></div>
+      </dl>
+    </div>
+    <img class="about__img" src="assets/img/showroom-about.jpg" alt="A cream 1941 Ford pickup lettered for Charlie's Auto Service, under a vintage Mobil sign in the showroom" loading="lazy" width="1400" height="933">
+  </section>
+
+  <section class="fin" id="financing" aria-labelledby="fin-title">
+    <div class="wrap">
+      <div class="sec-top">
+        <div><p class="lbl">Financing</p><h2 class="sec-h" id="fin-title">Finance your next classic.</h2></div>
+        <p class="sec-top__p">Two lenders we work with. Each application opens on the lender’s own site.</p>
+      </div>
+      <div class="partners">
+        <article class="partner">
+          <p class="lbl partner__k">Collector cars</p>
+          <h3 class="partner__h">Woodside Credit</h3>
+          <p class="partner__p">Tucson Classic Motor Co. recommends Woodside Credit for financing options for your collector car. Contact Scott Steckel or apply online.</p>
+          <div class="partner__go"><span class="partner__url">woodsidecredit.com</span>
+            <a class="btn btn--y" href="https://www.woodsidecredit.com/apply/?dlr=33361" target="_blank" rel="noopener">Apply with Woodside <span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></div>
+        </article>
+        <article class="partner">
+          <p class="lbl partner__k">Late-model specialty</p>
+          <h3 class="partner__h">J.J. Best Banc &amp; Co.</h3>
+          <p class="partner__p">J.J. Best Banc &amp; Co. is a great option for late-model specialty vehicles.</p>
+          <div class="partner__go"><span class="partner__url">jjbest.com</span>
+            <a class="btn btn--y" href="http://www.jjbest.com/12154" target="_blank" rel="noopener">Apply with J.J. Best <span aria-hidden="true">↗</span><span class="sr"> (opens in a new tab)</span></a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="rev wrap" aria-labelledby="rev-title">
+    <div class="sec-top">
+      <div><p class="lbl">Google reviews</p><h2 class="sec-h" id="rev-title">What customers say.</h2></div>
+      <div class="score" aria-label="Google rating: not connected yet">
+        <span class="score__num" aria-hidden="true">–.–</span>
+        <div><span class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><small>Rating and review count from Google</small></div>
+      </div>
+    </div>
+    <div class="rev__cards" aria-hidden="true">
+      <div class="rc"><span class="stars"><i></i><i></i><i></i><i></i><i></i></span><span class="ln"></span><span class="ln"></span><span class="ln" style="width:70%"></span><span class="rc__who"><span class="av"></span><span class="ln"></span></span></div>
+      <div class="rc"><span class="stars"><i></i><i></i><i></i><i></i><i></i></span><span class="ln"></span><span class="ln" style="width:85%"></span><span class="rc__who"><span class="av"></span><span class="ln"></span></span></div>
+      <div class="rc"><span class="stars"><i></i><i></i><i></i><i></i><i></i></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln" style="width:55%"></span><span class="rc__who"><span class="av"></span><span class="ln"></span></span></div>
+    </div>
+    <div class="rev__foot">
+      <p class="mock-tag">Layout mock-up — live Google reviews appear here once the Business profile is connected.</p>
+      <a class="btn btn--line" href="https://www.google.com/maps/search/?api=1&amp;query=Tucson+Classic+Motor+Co+2540+E+Grant+Rd+Tucson" target="_blank" rel="noopener">All reviews on Google <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+  <section class="visit" id="visit" aria-labelledby="visit-title">
+    <div class="map" data-map data-lenis-prevent role="region" aria-label="Map: 2540 E. Grant Rd., Tucson">
+      <img class="map__fallback" src="assets/img/map-fallback.jpg" alt="" loading="lazy">
+      <span class="map__hint" data-map-hint>Click the map to zoom and pan</span>
+    </div>
+    <div class="addr">
+      <p class="lbl">Visit the showroom</p>
+      <h2 class="addr__h" id="visit-title">2540 E. Grant Rd.<br>Tucson, AZ 85716</h2>
+      <dl class="addr__dl">
+        <dt>Visits</dt><dd>Showroom by appointment only</dd>
+        <dt>Phone</dt><dd><a href="tel:+15203509332">520-350-9332</a></dd>
+        <dt>Email</dt><dd><a href="mailto:Info@TucsonClassics.com">Info@TucsonClassics.com</a></dd>
+      </dl>
+      <div class="addr__go">
+        <a class="btn btn--y" href="mailto:Info@TucsonClassics.com?subject=Showroom%20visit">Book a visit</a>
+        <a class="btn btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=2540+E+Grant+Rd,+Tucson,+AZ+85716" target="_blank" rel="noopener">Directions <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <img class="foot__logo" src="assets/img/logo.png" alt="Tucson Classic Motor Co." width="89" height="72" loading="lazy">
+    <div class="foot__cols">
+      <div><p class="lbl">Cars</p><a href="https://tucsonclassics.com/inventory/">Current inventory</a><a href="https://tucsonclassics.com/sold-vehicles/">Sold</a><a href="#financing">Financing</a></div>
+      <div><p class="lbl">Sellers</p><a href="https://tucsonclassics.com/sell-your-car/">Sell your car</a><a href="tel:+15203509332">520-350-9332</a></div>
+      <div><p class="lbl">Visit</p><span>2540 E. Grant Rd.</span><span>Tucson, AZ 85716</span><span>By appointment</span></div>
+    </div>
+    <div class="foot__legal"><span>© Tucson Classic Motor Co.</span><a href="mailto:Info@TucsonClassics.com">Info@TucsonClassics.com</a></div>
+  </div>
+</footer>
+
+<script src="vendor/lenis.min.js" defer></script>
+<script src="vendor/leaflet.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
