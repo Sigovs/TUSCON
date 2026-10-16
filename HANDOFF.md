@@ -1,4 +1,4 @@
-# Tucson Classic Motor Co. — handoff (state at 16 Oct 2026)
+# Tucson Classic Motor Co. — handoff (updated 16 Oct 2026, evening)
 
 ## Status
 - Scope: **homepage only**. SRP and VDP are context from the brief, not deliverables yet.
@@ -42,14 +42,25 @@ Yellow buttons have a 1px ink edge, because yellow alone is 1.5:1 against the st
 - Lenis on every build (reduced-motion off, `anchors`, nested scrollers excluded).
 - The Git repo contains **only the page** (index + its files). No research dumps. The repo is public.
 
+## Done in the autonomous pass (16 Oct, evening)
+- **Hero retouched:** the advertising billboard behind the green sign is removed. The masked sky was filled by openai/gpt-image-2/edit, and only those pixels were composited back. The sign, its three lamps, the car and everything else are original pixels. Provenance and the mask live on the work Mac in research/retouch/.
+- Responsive pass at 1440, 1366, 1280, 1024, 768, 390 and 375: no horizontal scroll, no text below 14px, no console errors, all images load.
+- From 900 to 1399px the search panel docks as a row under the photo (on those screens the full 4:3 frame left no free concrete and the panel covered the car). From 1400px it sits on the photo, as approved.
+- Portrait tablet (600–899) puts paired blocks side by side.
+- All 17 external links return 200. The search builds a working query on the live inventory. The menu, the rail (arrows, keyboard, swipe) and the map (click-to-activate) are tested.
+- Impeccable detector: clean on the live page. A Design DNA critic review was run (see the commit history for fixes).
+
 ## Open items / blocked on the client
-1. **Hero retouch:** remove the blue advertising billboard above the green sign. **Do not touch the dealership's own green sign** or the building lettering. Still to be decided: the neighbour's sign on the far left ("…INGFIS…") and the overhead wires. Cleanup only, nothing generated or extended.
+1. Hero: the neighbour's sign on the far left ("…INGFIS…") and the overhead wires are still in the photo, waiting for the client's decision.
 2. Google reviews: needs the Google Business **Place ID**. The block is currently a mock-up.
 3. **Vector logo.** The current logo is a 335 px raster.
 4. A shared **Dropbox** link (the link given was a private /home path; Alex says Dropbox is empty for now).
 5. The map uses free OSM tiles: fine for a mock-up, but production needs a tile provider.
 6. "Service Department Mon–Sat 8–5" on the live site looks like theme leftovers. Confirm with the client before reusing it.
 7. Data to check: the live homepage showed the 1930 Model A as $26,500 while its VDP says SOLD. Not every VDP has a video (1912 Marsh Metz, 1954 Hillegass).
+
+## Preview
+GitHub Pages is **not enabled** for this repo yet. To turn it on: Settings → Pages → Deploy from branch → main / root. The URL will be https://sigovs.github.io/TUSCON/
 
 ## Next likely steps
 - Alex's review of this interactive homepage → fixes.

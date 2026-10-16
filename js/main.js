@@ -109,7 +109,8 @@
       if (!isNarrow) map.panBy([-Math.min(260, mapEl.clientWidth * .16), 0], { animate: false });
       const hint = $('[data-map-hint]');
       map.once('click', () => {
-        map.scrollWheelZoom.enable(); map.dragging.enable();
+        map.scrollWheelZoom.enable();
+        if (!window.L.Browser.mobile) map.dragging.enable();   // on touch, one-finger swipes keep scrolling the page
         hint?.classList.add('is-off');
       });
       mapEl.querySelector('.map__fallback')?.remove();
