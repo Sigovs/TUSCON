@@ -2,3 +2,5 @@
 index.src.html
 build.py
 __pycache__/
+.impeccable/
+index_v2.src.html
