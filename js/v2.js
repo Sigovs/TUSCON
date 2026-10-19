@@ -61,7 +61,7 @@
       const cover = $('[data-cover]');
       cover.classList.add('is-pinned');                                   // the pin replaces the CSS sticky
       const undo = [
-        pinx(cover, { len: 1.1, lines: $$('[data-hline]'), rest: $$('.cover__k, .cover__p, .cover__go'), media: [$('[data-cover-ph]')], dimHost: $('[data-cover-ph]'), dim: .6 }),
+        pinx(cover, { len: 1.1, lines: $$('[data-hline]'), rest: $$('.cover__k, .cover__p, .cover__go'), media: [],   /* the hero photograph never shrinks */ dimHost: $('[data-cover-ph]'), dim: .6 }),
         pinx($('.about'), { len: 1.1, words: $$('.about [data-split] .w'), rest: $$('.about__lead, .about__p, .about__c .plate'), media: [$('.about__ph')], dimHost: $('.about__ph'), dim: .35 }),
         pinx($('.sell'), { len: 1.2, words: $$('.sell [data-split] .w'), rest: $$('.sell__body > *'), media: [$('.sell__ph')], dimHost: $('.sell__ph'), dim: .45 }),
       ];
@@ -119,33 +119,42 @@
     if (about) gsap.from($$(':scope > :not([data-split])', about), { y: 40, opacity: 0, duration: 1.1, ease: EASE, stagger: .1, scrollTrigger: once(about) });
     $$('.sec-head').forEach(h => gsap.from($$(':scope > :not([data-split])', h), { y: 36, opacity: 0, duration: 1, ease: EASE, stagger: .1, scrollTrigger: once(h) }));
 
-    // Visual break — the car comes forward out of the black as you scroll; its year drifts the other way
+    // 360 section — scroll turns the car: the pinned scroll drives the video's time (every frame is a keyframe)
     const brk = $('[data-break]');
-    if (brk) {
+    const vid = $('[data-brk-vid]');
+    if (brk && vid) {
+      const narrowV = matchMedia('(max-width: 899px)').matches;
+      vid.src = narrowV ? vid.dataset.srcMob : vid.dataset.srcDesk;
+      vid.pause();
+      // paint the first frame (front three-quarter) instead of the poster as soon as the video can seek
+      vid.addEventListener('loadeddata', () => { if (vid.currentTime === 0) vid.currentTime = 0.001; }, { once: true });
+      let want = 0, raf = 0;
+      const seek = () => { raf = 0; if (vid.readyState >= 1 && Math.abs(vid.currentTime - want) > .01) vid.currentTime = want; };
+      const turn = p => {
+        const d = vid.duration || 8.04;
+        want = Math.min(d - .05, Math.max(0, p * d));
+        if (!raf) raf = requestAnimationFrame(seek);
+      };
+      const notes = $$('.brk__n'), rail = $('[data-brk-rail]');
+      let cur = 0;
+      const note = p => {
+        if (rail) rail.style.transform = `scaleY(${p})`;
+        const k = Math.min(notes.length - 1, Math.floor(p * notes.length * .999));
+        if (k === cur) return;
+        notes.forEach((n, i) => { n.classList.toggle('is-on', i === k); n.classList.toggle('is-past', i < k); });
+        cur = k;
+      };
       const bmm = gsap.matchMedia();
-      // desktop: the scene pins — light pools drift and reshape, the car comes forward out of the dark, its year slides past
       bmm.add('(min-width: 900px)', () => {
+        const st = { p: 0 };
         gsap.timeline({ defaults: { ease: 'none' },
-          scrollTrigger: { trigger: brk, start: 'top top', end: '+=180%', pin: '[data-brk-stage]', scrub: .6, anticipatePin: 1 } })
-          .fromTo('[data-brk-car]', { scale: .62, yPercent: 18, rotate: -3, opacity: .55, filter: 'brightness(.35)' },
-                                   { scale: 1, yPercent: 0, rotate: 0, opacity: 1, filter: 'brightness(1)', duration: .6 }, 0)
-          .fromTo('[data-brk-yr]', { xPercent: 14, opacity: 0 }, { xPercent: -14, opacity: 1, duration: 1 }, 0)
-          .fromTo('[data-g1]', { xPercent: -30, yPercent: 10, scale: .7, rotate: -20 }, { xPercent: 12, yPercent: -6, scale: 1.15, rotate: 25, duration: 1 }, 0)
-          .fromTo('[data-g2]', { xPercent: 30, yPercent: 20, scale: .8, rotate: 15 }, { xPercent: -20, yPercent: -10, scale: 1.2, rotate: -30, duration: 1 }, 0)
-          .fromTo('[data-g3]', { xPercent: -10, yPercent: 30, scale: .6, opacity: 0 }, { xPercent: 40, yPercent: -15, scale: 1.1, opacity: 1, duration: 1 }, 0)
-          .fromTo('[data-brk-cap]', { opacity: 0 }, { opacity: 1, duration: .05 }, .54)
-          .from($$('[data-brk-cap] > *'), { y: 32, opacity: 0, stagger: .06, duration: .25 }, .55)
-          .to('[data-brk-car]', { scale: 1.04, yPercent: -2, duration: .4 }, .6)
-          .to({}, { duration: .45 });                      // the stop: the finished frame holds before the page moves on
+          scrollTrigger: { trigger: brk, start: 'top top', end: '+=240%', pin: '[data-brk-stage]', scrub: .4, anticipatePin: 1 } })
+          .to(st, { p: 1, duration: .82, onUpdate: () => { turn(st.p); note(st.p); } }, 0)
+          .to('[data-brk-hint]', { opacity: 0, duration: .12 }, .08)
+          .to({}, { duration: .18 });                       // the stop: the car rests, side-on, before the page moves on
       });
-      // phone: no pin — the same ideas, tied to the section passing through
       bmm.add('(max-width: 899px)', () => {
-        gsap.fromTo('[data-brk-car]', { scale: .75, yPercent: 14, opacity: .3 }, { scale: 1, yPercent: 0, opacity: 1, ease: 'none',
-          scrollTrigger: { trigger: brk, start: 'top bottom', end: 'center center', scrub: .5 } });
-        gsap.fromTo('[data-g1]', { xPercent: -20, rotate: -15 }, { xPercent: 15, rotate: 20, ease: 'none', scrollTrigger: { trigger: brk, start: 'top bottom', end: 'bottom top', scrub: true } });
-        gsap.fromTo('[data-g2]', { xPercent: 20, rotate: 10 }, { xPercent: -20, rotate: -25, ease: 'none', scrollTrigger: { trigger: brk, start: 'top bottom', end: 'bottom top', scrub: true } });
-        gsap.fromTo('[data-brk-yr]', { xPercent: 10 }, { xPercent: -10, ease: 'none', scrollTrigger: { trigger: brk, start: 'top bottom', end: 'bottom top', scrub: true } });
-        gsap.from($$('[data-brk-cap] > *'), { y: 28, opacity: 0, duration: 1, ease: EASE, stagger: .1, scrollTrigger: once('[data-brk-cap]', 'top 92%') });
+        ST.create({ trigger: brk, start: 'top bottom', end: 'bottom top', scrub: .3, onUpdate: self => turn(self.progress) });
       });
     }
 

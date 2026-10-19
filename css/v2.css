@@ -238,16 +238,10 @@ main{position:relative}
 
 
 /* ---------- visual break: black field, one car, its year behind it ---------- */
-.brk{position:relative;z-index:1;background:#050506;color:var(--on-night);overflow:hidden}
+.brk{position:relative;z-index:1;background:#1b1b1a;color:var(--on-night);overflow:hidden}
 .brk__stage{position:relative;height:100svh;min-height:640px;display:grid;place-items:center;padding:var(--s6) var(--pad);overflow:hidden}
 /* uneven light: three soft, irregular pools — crimson behind the body, deep wine low, a warm amber spill */
-.brk__glow{position:absolute;inset:0;pointer-events:none}
-.brk__g{position:absolute;display:block;filter:blur(70px);will-change:transform}
-.brk__g--1{left:24%;top:12%;width:52vw;height:44vw;max-width:880px;max-height:720px;background:radial-gradient(closest-side,rgba(214,22,34,.95),rgba(150,10,22,.55) 55%,rgba(150,10,22,0));border-radius:42% 58% 63% 37% / 41% 44% 56% 59%}
-.brk__g--2{left:48%;top:40%;width:40vw;height:30vw;max-width:680px;max-height:500px;background:radial-gradient(closest-side,rgba(92,6,18,.9),rgba(60,4,12,0));border-radius:63% 37% 54% 46% / 55% 48% 52% 45%}
-.brk__g--3{left:10%;top:46%;width:30vw;height:26vw;max-width:520px;max-height:440px;background:radial-gradient(closest-side,rgba(232,120,40,.42),rgba(232,120,40,0));border-radius:38% 62% 46% 54% / 60% 35% 65% 40%}
 .brk__yr{position:absolute;left:50%;top:6%;translate:-50% 0;margin:0;font:400 clamp(160px,30vw,480px)/.8 var(--disp);letter-spacing:-.05em;color:rgba(242,243,241,.07);white-space:nowrap;pointer-events:none;user-select:none}
-.brk__car{position:relative;width:min(1080px,72vw,calc((100svh - 260px) * 1.5));height:auto;margin-top:calc(var(--s5) * -1)}
 .brk__cap{position:absolute;left:var(--pad);right:var(--pad);bottom:var(--s5);display:grid;grid-template-columns:1fr auto;align-items:end;gap:var(--s1) var(--s4);padding-top:var(--s3);border-top:1px solid rgba(242,243,241,.22)}
 .brk__k{grid-column:1/-1;color:var(--on-night-2)}
 .brk__h{font:400 clamp(24px,2.2vw,34px)/1.15 var(--disp);letter-spacing:-.01em}
@@ -394,12 +388,7 @@ main{position:relative}
   .sell__ph{min-height:62svh;order:-1}
   .sell__go .btn{width:100%}
   .brk__stage{height:auto;min-height:100svh;padding:var(--s6) var(--pad) var(--s5);align-content:center;gap:var(--s5)}
-  .brk__g{filter:blur(48px)}
-  .brk__g--1{left:-10%;top:10%;width:110vw;height:80vw}
-  .brk__g--2{left:30%;top:30%;width:80vw;height:60vw}
-  .brk__g--3{left:-20%;top:36%;width:70vw;height:60vw}
-  .brk__car{width:100%;margin-top:0}
-  .brk__yr{top:auto;bottom:62%}
+            .brk__yr{top:auto;bottom:62%}
   .brk__cap{position:relative;left:auto;right:auto;bottom:auto;grid-template-columns:1fr}
   .brk__row{justify-content:space-between}
   .send{grid-template-columns:1fr}
@@ -458,3 +447,78 @@ main{position:relative}
 .cover.is-pinned{position:relative}
 .pinx__dim{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:1}
 .about__ph,.sell__ph,.cover__ph{will-change:transform}
+
+/* instagram: six square tiles from our own photographs */
+.ig{position:relative;z-index:1;background:var(--paper);padding:0 var(--pad) var(--sec)}
+.ig__grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.ig__t{position:relative;aspect-ratio:1;overflow:hidden;border-radius:14px;background:var(--paper-2)}
+.ig__t::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 100% 0,rgba(0,0,0,.5),rgba(0,0,0,0) 34%),linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,0) 40%);opacity:1;transition:opacity .4s var(--ease);pointer-events:none}
+.ig__t:hover::after{opacity:1;background:rgba(0,0,0,.28)}
+.ig__ico{position:absolute;top:12px;right:12px;z-index:1;width:24px;height:24px;fill:none;stroke:#fff;stroke-width:1.8;opacity:.9;filter:drop-shadow(0 1px 3px rgba(0,0,0,.45));transition:transform .4s var(--ease),opacity .3s}
+.ig__ico .ig__dot{fill:#fff;stroke:none}
+.ig__t:hover .ig__ico{opacity:1;transform:scale(1.15)}
+.ig__t img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease),filter .5s var(--ease)}
+.ig__t:hover img{transform:scale(1.06);filter:contrast(1.05) saturate(1.06)}
+@media (max-width:899px){.ig{padding:0 var(--pad) var(--s6)}.ig__grid{grid-template-columns:repeat(3,1fr);gap:8px}.ig__t{border-radius:10px}.ig__ico{top:8px;right:8px;width:20px;height:20px}}
+
+/* 360 section: the studio video fills the stage; the scroll turns the car */
+.brk__vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 46%;background:#1b1b1a}
+.brk__shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(10,10,10,.82) 0%,rgba(10,10,10,0) 34%),linear-gradient(180deg,rgba(10,10,10,.35) 0%,rgba(10,10,10,0) 22%)}
+.brk--360 .brk__yr{top:auto;bottom:22%;color:rgba(242,243,241,.06);z-index:0}
+.brk__deg{position:absolute;right:var(--pad);top:calc(var(--hd) + var(--s4));margin:0;color:var(--on-night-2);font-variant-numeric:tabular-nums}
+.brk--360 .brk__cap{z-index:1}
+@media (max-width:899px){
+  .brk--360 .brk__stage{min-height:0;height:auto;display:flex;flex-direction:column;justify-content:center;gap:var(--s4);padding:var(--s6) 0 var(--s6)}
+  .brk__vid{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:50% 50%}
+  .brk__shade{display:none}
+  .brk__deg{position:relative;right:auto;top:auto;padding:0 var(--pad)}
+  .brk--360 .brk__cap{position:relative;left:auto;right:auto;bottom:auto;margin:0 var(--pad)}
+}
+
+/* 360 v2: record on the left from the first frame, the car's own lines changing on the right */
+.brk--360 .brk__cap{display:none}
+.brk__card{position:absolute;z-index:2;left:var(--pad);top:50%;transform:translateY(-50%);width:min(340px,26vw);display:grid;gap:var(--s3)}
+.brk__card .brk__h{font:400 clamp(30px,2.6vw,42px)/1.05 var(--disp);letter-spacing:-.015em}
+.brk__spec{display:grid;border-top:1px solid rgba(242,243,241,.22)}
+.brk__spec div{display:grid;grid-template-columns:5.2em 1fr;gap:var(--s2);padding:12px 0;border-bottom:1px solid rgba(242,243,241,.14)}
+.brk__spec dt{color:var(--on-night-2)}
+.brk__spec dd{font:400 16px/1.35 var(--text)}
+.brk__card .brk__row{display:flex;align-items:center;justify-content:space-between;gap:var(--s3)}
+.brk__card .brk__go:hover .ic{background:var(--act);border-color:var(--act);transform:translateX(4px)}
+.brk__notes{position:absolute;z-index:2;right:var(--pad);top:50%;transform:translateY(-50%);width:min(360px,26vw);min-height:220px;padding-left:var(--s4)}
+.brk__rail{position:absolute;left:0;top:0;bottom:0;width:1px;background:rgba(242,243,241,.18)}
+.brk__rail span{position:absolute;left:0;top:0;width:1px;height:100%;background:var(--on-night);transform-origin:50% 0;transform:scaleY(0)}
+.brk__n{position:absolute;inset:0 0 auto var(--s4);margin:0;opacity:0;transform:translateY(24px);transition:opacity .5s var(--ease),transform .6s var(--ease)}
+.brk__n.is-on{opacity:1;transform:none}
+.brk__n.is-past{transform:translateY(-24px)}
+.brk__n figcaption{color:var(--on-night-2);margin-bottom:var(--s2)}
+.brk__n blockquote{margin:0;font:400 clamp(22px,1.8vw,28px)/1.3 var(--disp);letter-spacing:-.01em;color:var(--on-night)}
+.brk--360 .brk__shade{background:linear-gradient(90deg,rgba(14,14,14,.78) 0%,rgba(14,14,14,0) 32%,rgba(14,14,14,0) 68%,rgba(14,14,14,.78) 100%)}
+.brk--360 .brk__deg{left:50%;right:auto;top:auto;bottom:var(--s5);translate:-50% 0}
+@media (max-width:1180px) and (min-width:900px){.brk__card,.brk__notes{width:28vw}}
+@media (max-width:899px){
+  .brk__card,.brk__notes{position:relative;left:auto;right:auto;top:auto;transform:none;width:auto;margin:0 var(--pad)}
+  .brk__notes{min-height:0;padding-left:0;display:grid;gap:var(--s4)}
+  .brk__rail{display:none}
+  .brk__n{position:relative;inset:auto;opacity:1;transform:none;border-top:1px solid rgba(242,243,241,.18);padding-top:var(--s3)}
+  .brk--360 .brk__deg{position:relative;left:auto;bottom:auto;translate:none}
+}
+
+/* 360 layout: record | car | notes — the video lives in the centre column and dissolves into the studio grey */
+@media (min-width:900px){
+  .brk--360 .brk__stage{background:radial-gradient(ellipse 60% 55% at 50% 46%,#2b2b29 0%,#1b1b1a 60%,#141413 100%)}
+  .brk--360 .brk__vid{inset:auto;left:50%;top:50%;width:min(60vw,1160px);height:auto;aspect-ratio:16/9;transform:translate(-50%,-50%);background:transparent;
+    -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,#000 62%,transparent 100%)}
+  .brk--360 .brk__shade{display:none}
+  .brk__card,.brk__notes{width:min(330px,21vw)}
+}
+
+/* the car's record as a glass card over the studio */
+.brk__card{padding:28px 28px 24px;border-radius:18px;background:linear-gradient(160deg,rgba(255,255,255,.11) 0%,rgba(255,255,255,.04) 100%);
+  -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);
+  border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 24px 60px -24px rgba(0,0,0,.6)}
+.brk__card .brk__spec{border-top-color:rgba(255,255,255,.16)}
+.brk__card .brk__spec div{border-bottom-color:rgba(255,255,255,.1)}
+.brk__card .brk__spec div:last-child{border-bottom:0}
+@media (min-width:900px){.brk__card{width:min(360px,23vw)}}
+@media (max-width:899px){.brk__card{padding:22px 20px 18px;border-radius:14px}}

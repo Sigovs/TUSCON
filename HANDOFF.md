@@ -71,8 +71,9 @@ GitHub Pages is **not enabled** for this repo yet. To turn it on: Settings → P
 
 ## v2 (19 Oct 2026) — current working direction
 - `index_v2.html`: the new homepage built on Alex's Design DNA. Preview: https://sigovs.github.io/TUSCON/index_v2.html
-- Order: hero (Alex's hero_tuscon image) → inventory (search bar, rail, View Current Inventory) → visual break (1932 Ford cut-out, pinned) → About → Sell your car → Financing → Google reviews (labelled samples) → footer with a dark map.
-- Palette: concrete #ECEDEB, ink #101316, asphalt night #0E1114, one action green #3D6646. Type: Zodiak (display), Switzer (text), Geist Mono (labels). Motion: Lenis + GSAP ScrollTrigger; Czinger-style pin-stops on desktop (hero, break, About, Sell); no pins on phones; reduced motion is static.
+- Order: hero (Alex's hero_tuscon image) → inventory (search bar, rail, View Current Inventory) → 360 section (1973 Lincoln Town Coupe video turned by scroll, pinned; glass spec card + lines from its description) → About → Sell your car → Financing → Google reviews (labelled samples) → Instagram (our photos, handle TBC) → footer with a dark map and "Powered by All Auto Network".
+- Palette: concrete #ECEDEB, ink #101316, asphalt night #0E1114, one action green #3D6646. Type: Zodiak (display), Switzer (text), Geist Mono (labels). Motion: Lenis + GSAP ScrollTrigger; Czinger-style pin-stops on desktop (hero, 360, About, Sell); no pins on phones; reduced motion is static.
 - Navigation is the live site's (Home · Current Inventory · Sold Inventory · Financing · Sell Your Vehicle).
+- The 360 video looks AI-generated ("Black Lincoln in a spacious studio"); check it against the real car before launch.
 - Open: the phone number on the sign in the hero image reads wrong (510-130-4513); Google Place ID; vector logo; a production map style (the dark map is OSM + CSS filter).
 - Source: `index_v2.src.html` + `build.py` (not in the repo); `index_v2.html` can be edited directly.

@@ -255,18 +255,37 @@
     </div>
   </section>
 
-  <!-- VISUAL BREAK — one car from the current inventory, lit like a museum piece -->
-  <section class="brk" aria-labelledby="brk-h" data-break>
+  <!-- 360 SECTION — the 1973 Lincoln from the current inventory turns as you scroll -->
+  <section class="brk brk--360" aria-labelledby="brk-h" data-break>
   <div class="brk__stage" data-brk-stage>
-    <div class="brk__glow" aria-hidden="true"><i class="brk__g brk__g--1" data-g1></i><i class="brk__g brk__g--2" data-g2></i><i class="brk__g brk__g--3" data-g3></i></div>
-    <p class="brk__yr" aria-hidden="true" data-brk-yr>1932</p>
-    <img class="brk__car" data-brk-car src="assets/img/break-1536.webp" srcset="assets/img/break-960.webp 960w, assets/img/break-1536.webp 1536w" sizes="(max-width: 899px) 100vw, 80vw" width="1536" height="1024" loading="lazy"
-         alt="A red 1932 Ford three-window coupe with a supercharged engine and wide whitewall tyres, photographed from above on black">
-    <a class="brk__cap" href="https://tucsonclassics.com/inventory/1932-ford-blown-original-henry-steel-3-window-coupe/" data-brk-cap>
-      <span class="mono brk__k">In the showroom now</span>
-      <span class="brk__h" id="brk-h">1932 Ford · Blown 3-window coupe, original Henry steel</span>
-      <span class="brk__row"><b class="brk__p">$59,500</b><span class="brk__go">View car <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
-    </a>
+    <video class="brk__vid" data-brk-vid muted playsinline preload="auto" poster="assets/img/lincoln-360-poster.jpg"
+           data-src-desk="assets/video/lincoln-360-1920.mp4" data-src-mob="assets/video/lincoln-360-960.mp4"
+           aria-label="A black 1973 Lincoln Continental Town Coupe turning through 360 degrees in a dark studio"></video>
+    <div class="brk__shade" aria-hidden="true"></div>
+    <p class="mono brk__deg" aria-hidden="true" data-brk-hint>Scroll to turn</p>
+
+    <!-- left: the car's record, there from the first frame -->
+    <aside class="brk__card" aria-labelledby="brk-h">
+      <p class="mono brk__k">In the showroom now</p>
+      <h2 class="brk__h" id="brk-h">1973 Lincoln Town Coupe</h2>
+      <dl class="brk__spec">
+        <div><dt class="mono">Miles</dt><dd>25,047 since new</dd></div>
+        <div><dt class="mono">Paint</dt><dd>Raven Black, code 1C</dd></div>
+        <div><dt class="mono">Engine</dt><dd>460 V8, C-6 automatic</dd></div>
+        <div><dt class="mono">Wheels</dt><dd>Factory Lincoln 15&Prime; aluminum</dd></div>
+      </dl>
+      <div class="brk__row"><b class="brk__p">$35,000</b>
+        <a class="brk__go" href="https://tucsonclassics.com/inventory/1973-lincoln-town-coupe-coming-soon/">View car <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></a></div>
+    </aside>
+
+    <!-- right: lines from the car's own description, changing as it turns -->
+    <div class="brk__notes" data-brk-notes>
+      <div class="brk__rail" aria-hidden="true"><span data-brk-rail></span></div>
+      <figure class="brk__n is-on" data-n="0"><figcaption class="mono">Ordered</figcaption><blockquote>“Optioned as a Premium town coupe and factory ordered in code 1C ‘Raven Black’ and GA code Black Leather.”</blockquote></figure>
+      <figure class="brk__n" data-n="1"><figcaption class="mono">Paint</figcaption><blockquote>“A show quality repaint in its original color of Raven Black… fully sanded and buffed to a mirror finish.”</blockquote></figure>
+      <figure class="brk__n" data-n="2"><figcaption class="mono">Engine</figcaption><blockquote>“Powered by a 460 V8 and C-6 automatic. Runs and drives amazing and the 460 just purrs.”</blockquote></figure>
+      <figure class="brk__n" data-n="3"><figcaption class="mono">Wheels</figcaption><blockquote>“Rolls on fully polished factory Lincoln 15” aluminum rims and Michelin radials.”</blockquote></figure>
+    </div>
   </div>
   </section>
 
@@ -339,6 +358,18 @@
     <a class="btn btn--line" href="https://www.google.com/maps/search/?api=1&amp;query=Tucson+Classic+Motor+Co+2540+E+Grant+Rd+Tucson" target="_blank" rel="noopener">All reviews on Google <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M6 4.5h5.5V10"/></svg></a>
   </section>
 
+  <!-- INSTAGRAM — our own photographs until the account is connected -->
+  <section class="ig" aria-labelledby="ig-h">
+    <div class="sec-head"><h2 class="disp disp--l" id="ig-h" data-split>Instagram</h2><p class="sec-head__p mock">Handle to be confirmed. Until the account is connected, the tiles show photographs from the showroom and the current inventory.</p></div>
+    <ul class="ig__grid" data-stagger>
+      <li class="ig__t"><img src="assets/img/car-1946-ford-coupe.jpg" alt="A maroon 1946 Ford coupe in front of the flame mural" loading="lazy"><svg class="ig__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="ig__dot"/></svg></li>
+      <li class="ig__t"><img src="assets/img/fin-carbs.jpg" alt="Twin carburettors on a supercharged engine" loading="lazy"><svg class="ig__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="ig__dot"/></svg></li>
+      <li class="ig__t"><img src="assets/img/sell-v2.jpg" alt="A black 1960 Chevrolet Biscayne in the showroom" loading="lazy"><svg class="ig__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="ig__dot"/></svg></li>
+      <li class="ig__t"><img src="assets/img/car-1912-marsh-metz.jpg" alt="A 1912 Marsh Metz motorcycle" loading="lazy"><svg class="ig__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="ig__dot"/></svg></li>
+      <li class="ig__t"><img src="assets/img/about-v2.jpg" alt="A 1941 Ford pickup under a vintage Mobil sign" loading="lazy"><svg class="ig__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="ig__dot"/></svg></li>
+      <li class="ig__t"><img src="assets/img/car-1954-bsa-a7.jpg" alt="A 1954 BSA A7 Shooting Star race bike" loading="lazy"><svg class="ig__ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="ig__dot"/></svg></li>
+    </ul>
+  </section>
 </main>
 
 <footer class="ft-wrap">
