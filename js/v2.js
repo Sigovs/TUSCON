@@ -46,8 +46,9 @@
       if (!el) return;
       let veil = null;
       if (dimHost) { veil = document.createElement('div'); veil.className = 'pinx__dim'; veil.setAttribute('aria-hidden', 'true'); dimHost.appendChild(veil); }
+      // a section taller than the screen docks on its last line instead of its first, so its CTA is never cut
       const tl = gsap.timeline({ defaults: { ease: 'power1.in' },
-        scrollTrigger: { trigger: el, start: 'top top', end: () => `+=${len * innerHeight}`, pin: true, pinSpacing: true, scrub: true, anticipatePin: 1, invalidateOnRefresh: true } });
+        scrollTrigger: { trigger: el, start: () => el.offsetHeight > innerHeight ? 'bottom bottom' : 'top top', end: () => `+=${len * innerHeight}`, pin: true, pinSpacing: true, scrub: true, anticipatePin: 1, invalidateOnRefresh: true } });
       tl.to({}, { duration: 1 }, 0);                                                              // 0 → 1
       if (lines.length) tl.fromTo(lines, { yPercent: 0 }, { yPercent: -115, duration: .2, stagger: .05, immediateRender: false }, .45);   // hold 0–0.45
       // split titles: their inner spans belong to the entrance, so the exit moves the word wrappers (ownership kept apart)
