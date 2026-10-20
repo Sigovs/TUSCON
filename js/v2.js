@@ -42,7 +42,7 @@
     // 1 · PIN-STOP (the Czinger "pinx" pattern): the section docks, HOLDS while it reads, then its headline
     //     leaves line by line, the rest follows, the photograph scales back a touch and darkens. Fully reversible.
     //     Desktop only — on a phone these sections are taller than the screen and a pin would cut them.
-    const pinx = (el, { len, lines = [], words = [], rest, media, dimHost, dim = .45 }) => {
+    const pinx = (el, { len, lines = [], words = [], rest, media, dimHost, dim = .45, extra }) => {
       if (!el) return;
       let veil = null;
       if (dimHost) { veil = document.createElement('div'); veil.className = 'pinx__dim'; veil.setAttribute('aria-hidden', 'true'); dimHost.appendChild(veil); }
@@ -50,6 +50,7 @@
       const tl = gsap.timeline({ defaults: { ease: 'power1.in' },
         scrollTrigger: { trigger: el, start: () => el.offsetHeight > innerHeight ? 'bottom bottom' : 'top top', end: () => `+=${len * innerHeight}`, pin: true, pinSpacing: true, scrub: true, anticipatePin: 1, invalidateOnRefresh: true } });
       tl.to({}, { duration: 1 }, 0);                                                              // 0 → 1
+      if (extra) extra(tl);                                                                       // a section's own idea, inside its hold
       if (lines.length) tl.fromTo(lines, { yPercent: 0 }, { yPercent: -115, duration: .2, stagger: .05, immediateRender: false }, .45);   // hold 0–0.45
       // split titles: their inner spans belong to the entrance, so the exit moves the word wrappers (ownership kept apart)
       if (words.length) tl.fromTo(words, { y: 0, opacity: 1 }, { y: -48, opacity: 0, duration: .2, stagger: .04, immediateRender: false }, .45);
@@ -58,23 +59,41 @@
       if (veil) tl.fromTo(veil, { opacity: 0 }, { opacity: dim, duration: .55, ease: 'none' }, .45);
       return () => { veil && veil.remove(); };
     };
+    // SELL STEPS — the one idea of the Sell chapter: during the hold a cursor walks the process 01 → 02 → 03,
+    // lighting each number for good and resting on the last step, right above the CTA.
+    const DIM = '#5A6066', LIT = '#F2F3F1', CELL = '#171B1F', NIGHT = '#0E1114';
+    const steps = (tl, a, b) => {
+      const list = $('.send'); if (!list) return;
+      const cells = $$('.send__t', list), nums = $$('.send__n', list), seg = (b - a) / cells.length;
+      gsap.set(nums, { color: DIM });
+      cells.forEach((c, i) => {
+        const at = a + i * seg;
+        tl.to(nums[i], { color: LIT, duration: seg * .25, ease: 'none' }, at);
+        tl.fromTo(c, { backgroundColor: NIGHT }, { backgroundColor: CELL, duration: seg * .3, ease: 'none', immediateRender: false }, at);
+        if (i < cells.length - 1) tl.to(c, { backgroundColor: NIGHT, duration: seg * .3, ease: 'none' }, at + seg);
+      });
+    };
+    // phone: no pin, so the walk is tied to the list crossing the screen
+    gsap.matchMedia().add('(max-width: 899px)', () => {
+      const list = $('.send'); if (!list) return;
+      steps(gsap.timeline({ scrollTrigger: { trigger: list, start: 'top 82%', end: 'bottom 52%', scrub: .3 } }), 0, 1);
+    });
     gsap.matchMedia().add('(min-width: 900px)', () => {
       const cover = $('[data-cover]');
       cover.classList.add('is-pinned');                                   // the pin replaces the CSS sticky
       const undo = [
         pinx(cover, { len: 1.1, lines: $$('[data-hline]'), rest: $$('.cover__k, .cover__p, .cover__go'), media: [],   /* the hero photograph never shrinks */ dimHost: $('[data-cover-ph]'), dim: .6 }),
         pinx($('.about'), { len: 1.1, words: $$('.about [data-split] .w'), rest: $$('.about__lead, .about__p, .about__c .plate'), media: [$('.about__ph')], dimHost: $('.about__ph'), dim: .35 }),
-        pinx($('.sell'), { len: 1.2, words: $$('.sell [data-split] .w'), rest: $$('.sell__body > *'), media: [$('.sell__ph')], dimHost: $('.sell__ph'), dim: .45 }),
+        pinx($('.sell'), { len: 1.2, words: $$('.sell [data-split] .w'), rest: $$('.sell__body > *'), media: [$('.sell__ph')], dimHost: $('.sell__ph'), dim: .45, extra: tl => steps(tl, .03, .38) }),
       ];
       return () => { cover.classList.remove('is-pinned'); undo.forEach(f => f && f()); };
     });
 
     // 2 · Lists arrive as lists
     $$('[data-stagger]').forEach(list => {
-      gsap.from(list.children, { y: 44, opacity: 0, duration: 1, ease: EASE, stagger: .09, scrollTrigger: once(list) });
+      gsap.from(list.children, { y: 28, duration: 1.1, ease: EASE, stagger: .07, scrollTrigger: once(list) });   // position only — never invisible
     });
     const head = $('.coll__head');
-    if (head) gsap.from($$(':scope > :not([data-split])', head), { y: 36, opacity: 0, duration: 1, ease: EASE, stagger: .1, scrollTrigger: once(head) });
     // Titles: every word rides up out of its own mask, one step after the other (a ladder)
     $$('[data-split]').forEach(h => {
       gsap.from($$('.w>span', h), { yPercent: 115, duration: 1.15, ease: EASE, stagger: .075, scrollTrigger: once(h, 'top 88%') });
@@ -104,7 +123,6 @@
     const sell = $('.sell');
     if (sell) {
       gsap.from($$('[data-line]', sell), { yPercent: 108, duration: 1.2, ease: EASE, stagger: .12, scrollTrigger: once(sell, 'top 70%') });
-      gsap.from($$('.sell__body > *', sell), { y: 32, opacity: 0, duration: 1, ease: EASE, stagger: .08, scrollTrigger: once('.sell__body', 'top 85%') });
     }
     $$('[data-reveal]').forEach(fig => {
       const img = fig.querySelector('img');
@@ -117,8 +135,6 @@
         scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
     const about = $('.about__c');
-    if (about) gsap.from($$(':scope > :not([data-split])', about), { y: 40, opacity: 0, duration: 1.1, ease: EASE, stagger: .1, scrollTrigger: once(about) });
-    $$('.sec-head').forEach(h => gsap.from($$(':scope > :not([data-split])', h), { y: 36, opacity: 0, duration: 1, ease: EASE, stagger: .1, scrollTrigger: once(h) }));
 
     // 360 section — scroll turns the car: the pinned scroll drives the video's time (every frame is a keyframe)
     const brk = $('[data-break]');
@@ -161,7 +177,7 @@
 
     // 4 · The address card slides onto the map
     const card = $('[data-slide]');
-    if (card) gsap.from(card, { x: -90, opacity: 0, duration: 1.3, ease: EASE, scrollTrigger: once('.visit', 'top 70%') });
+    if (card) gsap.from(card, { x: -90, duration: 1.3, ease: EASE, scrollTrigger: once('.visit', 'top 70%') });
 
     // 5 · The page closes on the name, letter by letter, as the last screen arrives
     const word = $('[data-word]');
