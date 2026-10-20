@@ -617,3 +617,8 @@ main{position:relative}
 
 /* v3 · 20 Oct: the 360 break is gone, so inventory runs straight into About (paper → paper) — halve the gap */
 .coll{padding-bottom:calc(var(--sec) * .5)}
+
+/* v3 · 20 Oct: reviews on their own tone — the shaded concrete, one step down from paper */
+.rev{background:var(--paper-2)}
+.ig{padding-top:var(--sec)}
+@media (max-width:899px){.ig{padding-top:var(--s6)}}
