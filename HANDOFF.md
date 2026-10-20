@@ -77,3 +77,12 @@ GitHub Pages is **not enabled** for this repo yet. To turn it on: Settings → P
 - The 360 video looks AI-generated ("Black Lincoln in a spacious studio"); check it against the real car before launch.
 - Open: the phone number on the sign in the hero image reads wrong (510-130-4513); Google Place ID; vector logo; a production map style (the dark map is OSM + CSS filter).
 - Source: `index_v2.src.html` + `build.py` (not in the repo); `index_v2.html` can be edited directly.
+
+## v2 — session 20 Oct 2026
+- **Sell:** three steps 01 Your car · 02 Your price · 03 Photographs, taken from the fields of the live sell form (no invented promises). During the desktop pin hold a cursor walks 01 → 03 and each number stays lit; on phones it follows the list's own scroll.
+- **Header:** phone pill (icon-only 900–1180px and on phones, hidden below 375px); 2px reading-progress line along the bottom edge.
+- **Motion rule now in the code:** no opacity-gated reveals. Headlines keep their masked ladder; lists only shift; body copy is always visible. A pinned section taller than the screen docks on its bottom edge so the CTA is never cut.
+- **Micro elements:** status stamp on inventory photos (only the 1968 GTO is "Coming Soon!" on the live site as of 20 Oct; a `data-status="sold"` state is styled but unused); round frosted rail arrows; a 30+ anchor numeral in About.
+- **360:** the clip turns front ¾ → rear ¾ (≈35° → 145°, read off its frames), not 360°. The dial shows that range; the video's aria-label was corrected.
+- **Local preview:** use a server with HTTP Range support, or the 360 video will not seek: `npx http-server@14.1.1 -p 5181 -c-1` (Python's http.server does not seek MP4).
+- **Open:** at 1024×768 the Sell and About pins are taller than the screen (their headlines sit above the fold during the hold). The repo moved to `github.com/Sigovs/TUSCON` (the push redirects).
