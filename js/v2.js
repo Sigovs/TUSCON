@@ -135,7 +135,7 @@
         want = Math.min(d - .05, Math.max(0, p * d));
         if (!raf) raf = requestAnimationFrame(seek);
       };
-      const notes = $$('.brk__n'), rail = $('[data-brk-rail]');
+      const notes = $$('.brk__l'), rail = null;
       let cur = 0;
       const note = p => {
         if (rail) rail.style.transform = `scaleY(${p})`;
