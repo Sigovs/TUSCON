@@ -86,3 +86,8 @@ GitHub Pages is **not enabled** for this repo yet. To turn it on: Settings → P
 - **360:** the clip turns front ¾ → rear ¾ (≈35° → 145°, read off its frames), not 360°. The dial shows that range; the video's aria-label was corrected.
 - **Local preview:** use a server with HTTP Range support, or the 360 video will not seek: `npx http-server@14.1.1 -p 5181 -c-1` (Python's http.server does not seek MP4).
 - **Open:** at 1024×768 the Sell and About pins are taller than the screen (their headlines sit above the fold during the hold). The repo moved to `github.com/Sigovs/TUSCON` (the push redirects).
+
+## v3 — 20 Oct 2026 (working copy; v2 is frozen)
+- `index_v3.html` + `css/v3.css` + `js/v3.js` — a copy of v2; all new work goes here. Source `index_v3.src.html` (not in the repo).
+- Titles about a quarter smaller (client's manager): hero 100→76px, section titles 100→72, Sell 124→84, sub-titles 60→46.
+- The Lincoln 360 section is removed from v3 at the manager's request. **Parked for a future About us page** — the video (`assets/video/lincoln-360-*.mp4`, poster `assets/img/lincoln-360-poster.jpg`) and the scrub code in `js/v3.js` stay in place; the full section is still live in v2. Check the clip against the real car before reusing it (it looks AI-generated).
