@@ -207,8 +207,9 @@ main{position:relative}
 .prog{height:1px;background:var(--rule);position:relative;overflow:hidden}
 .prog span{position:absolute;inset:0;background:var(--ink);transform-origin:0 50%;transform:scaleX(.1);transition:transform .2s linear}
 .arrows{display:flex;gap:var(--s1)}
-.arrow{width:52px;height:52px;display:grid;place-items:center;background:transparent;border:1px solid var(--ink);color:var(--ink);font-size:20px;cursor:pointer;transition:background-color .2s,color .2s,opacity .2s}
-.arrow:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+.arrow{width:52px;height:52px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.55);-webkit-backdrop-filter:blur(12px) saturate(140%);backdrop-filter:blur(12px) saturate(140%);border:1px solid rgba(16,19,22,.16);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 6px 18px -10px rgba(16,19,22,.35);color:var(--ink);font-size:20px;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s,opacity .2s,transform .15s}
+.arrow:hover:not(:disabled){background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.arrow:active:not(:disabled){transform:scale(.96)}
 .arrow:disabled{opacity:.28;cursor:default}
 
 /* ---------- 4 · sell — the tonal exception: asphalt at dusk, continuing the hero ---------- */
@@ -569,3 +570,32 @@ main{position:relative}
 
 /* Sell steps: the cursor is driven by script (js/v2.js) — no CSS transition may lag behind the scrub */
 .send__t{transition:none}
+
+/* header: reading progress along its bottom edge (hidden while the header floats over the hero) */
+.hd__prog{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--ink);transform-origin:0 50%;transform:scaleX(0);pointer-events:none;transition:opacity .3s var(--ease)}
+.hd.is-over .hd__prog{opacity:0}
+
+/* inventory: a status stamp on the photo - "soon" from the live listing; "sold" is ready, unused */
+.car__stamp{position:absolute;z-index:1;top:14px;left:14px;padding:7px 10px 6px;background:var(--paper);color:var(--ink);border:1.5px solid var(--ink);font:500 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;transform:rotate(-4deg);transform-origin:0 0;box-shadow:0 2px 0 rgba(16,19,22,.12)}
+.car[data-status="sold"] .car__stamp{background:var(--ink);color:var(--paper)}
+.car[data-status="sold"] .car__img img{filter:grayscale(1) contrast(.95)}
+.car[data-status="sold"] .car__price{text-decoration:line-through;text-decoration-thickness:1px}
+
+/* 360: the turn as a reading - angle and a dial that slides under a fixed mark */
+.brk__dial{position:absolute;z-index:2;left:65%;bottom:var(--s5);transform:translateX(-50%);display:grid;justify-items:center;gap:10px;pointer-events:none}
+.brk__ang{margin:0;font:400 clamp(28px,2.4vw,40px)/1 var(--disp);letter-spacing:-.01em;color:var(--on-night);font-variant-numeric:tabular-nums}
+.brk__scale{position:relative;width:min(320px,22vw);height:30px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent)}
+.brk__ticks{position:absolute;left:50%;top:0;height:100%;width:721px;transform:translateX(-140px);
+  background:repeating-linear-gradient(90deg,rgba(242,243,241,.32) 0 1px,transparent 1px 20px) 0 0/100% 8px no-repeat,repeating-linear-gradient(90deg,rgba(242,243,241,.7) 0 1px,transparent 1px 180px) 0 0/100% 14px no-repeat}
+.brk__ticks span{position:absolute;top:17px;translate:-50% 0;font:500 11px/1 var(--mono);letter-spacing:.06em;color:var(--on-night-2)}
+.brk__mark{position:absolute;left:50%;top:0;width:1px;height:16px;background:var(--on-night)}
+@media (max-width:899px){
+  .brk__dial{position:relative;left:auto;bottom:auto;transform:none;margin:0 auto;order:-1}   /* the reading sits right under its car */
+  .brk--360 .brk__vid{order:-2}
+  .brk__scale{width:min(280px,72vw)}
+}
+
+/* about: the experience row is the anchor numeral */
+.plate__anchor dd{display:grid;gap:4px}
+.plate__num{font:400 clamp(56px,5.6vw,88px)/.9 var(--disp);letter-spacing:-.04em;font-variant-numeric:lining-nums}
+.plate__anchor dd span{font-size:15px;color:var(--ink-2)}

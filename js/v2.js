@@ -145,11 +145,21 @@
       vid.pause();
       // paint the first frame (front three-quarter) instead of the poster as soon as the video can seek
       vid.addEventListener('loadeddata', () => { if (vid.currentTime === 0) vid.currentTime = 0.001; }, { once: true });
+      // the clip turns from front 3/4 to rear 3/4 - read off its frames as ~35 deg -> 145 deg (approximate, decorative)
+      const A0 = 35, A1 = 145, PX = 4;                                   // 4px per degree on the dial
+      const ang = $('[data-brk-ang]'), ticks = $('[data-brk-ticks]');
+      if (ticks) for (let a = 0; a <= 180; a += 45) ticks.insertAdjacentHTML('beforeend', `<span style="left:${a * PX}px">${a}</span>`);
+      const dial = t => {
+        const a = A0 + (A1 - A0) * t;
+        if (ang) ang.textContent = String(Math.round(a)).padStart(3, '0');
+        if (ticks) ticks.style.transform = `translateX(${-a * PX}px)`;
+      };
       let want = 0, raf = 0;
       const seek = () => { raf = 0; if (vid.readyState >= 1 && Math.abs(vid.currentTime - want) > .01) vid.currentTime = want; };
       const turn = p => {
         const d = vid.duration || 8.04;
         want = Math.min(d - .05, Math.max(0, p * d));
+        dial(want / (d - .05));
         if (!raf) raf = requestAnimationFrame(seek);
       };
       const notes = $$('.brk__l'), rail = null;
@@ -193,7 +203,7 @@
   }
 
   /* ---- Header gets its hairline once the page has moved ---- */
-  const hd = $('[data-hd]');
+  const hd = $('[data-hd]'), hdProg = $('[data-hd-prog]');
   let lastY = 0;
   const onScroll = () => {
     if (!hd) return;
@@ -202,6 +212,7 @@
     const over = cover && y < cover.offsetHeight - 90;
     hd.classList.toggle('is-over', !!over);
     hd.classList.toggle('is-scrolled', !over && y > 8);
+    if (hdProg) { const max = document.documentElement.scrollHeight - innerHeight; hdProg.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`; }
     lastY = y;
   };
   lenis ? lenis.on('scroll', onScroll) : addEventListener('scroll', onScroll, { passive: true });
