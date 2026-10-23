@@ -26,7 +26,7 @@
   --s1:8px;--s2:16px;--s3:24px;--s4:32px;--s5:48px;--s6:72px;--s7:120px;--s8:180px;
   --pad:clamp(28px,7.6vw,148px);  /* the one vertical: logo, hero copy, every section */
   --sec:clamp(88px,10vw,160px);
-  --hd:68px;
+  --hd:80px;
 
   /* type scale */
   --t-xl:clamp(52px,9.4vw,152px);  /* statement */
@@ -85,26 +85,27 @@ input,select{caret-color:var(--act)}
 .btn--line:hover{background:var(--ink);color:var(--paper)}
 /* header over the hero: the SAME bar — same height, same items, same positions; only the ground and ink change */
 .hd.is-over{background:transparent;border-bottom-color:transparent;color:var(--on-night)}
-.hd.is-over .hd__mark img{filter:invert(1)}
+.hd.is-over .hd__mark .hd__logo{filter:invert(1)}
 .hd.is-over .hd__nav a{opacity:.9;text-shadow:0 1px 12px rgba(0,0,0,.35)}
 .hd.is-over .hd__nav a:hover{opacity:1}
 .hd.is-over .hd__menu{color:var(--on-night)}
 .hd{transition:background-color .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease)}
 .hd__mark{position:relative}
-.hd__mark img{transform-origin:0 0;transition:filter .35s var(--ease),transform .5s var(--ease)}
-.hd__name{transition:opacity .3s var(--ease)}
+.hd__mark .hd__logo{position:absolute;left:0;top:50%;margin-top:-24px;opacity:0;visibility:hidden;transform-origin:0 0;transition:opacity .3s var(--ease),visibility 0s .3s,filter .35s var(--ease),transform .5s var(--ease)}
+.hd__word{transition:opacity .3s var(--ease),filter .35s var(--ease)}
+.hd.is-over .hd__word{filter:invert(1)}
 /* over the hero the mark is shown at scale (as in the concept); nav and button do not move */
-.hd.is-over .hd__mark img{transform:translateY(18px) scale(2.3)}
-.hd.is-over .hd__name{opacity:0;pointer-events:none}
+.hd.is-over .hd__mark .hd__logo{opacity:1;visibility:visible;transition-delay:0s;transform:translateY(18px) scale(2.3)}
+.hd.is-over .hd__word{opacity:0;pointer-events:none}
 .btn--act{background:var(--act);color:#fff}
 .btn--act:hover{background:var(--act-hover)}
 
 /* ---------- header: one quiet bar ---------- */
 .hd{position:fixed;inset:0 0 auto;z-index:50;height:var(--hd);display:flex;align-items:center;gap:var(--s4);padding:0 var(--pad);background:var(--paper);border-bottom:1px solid transparent;transition:border-color .3s,transform .45s cubic-bezier(.16,1,.3,1)}
 .hd.is-scrolled{border-bottom-color:var(--rule)}
-.hd__mark{display:flex;align-items:center;gap:12px;margin-right:auto}
-.hd__mark img{height:48px;width:auto}
-.hd__name{font:500 15px/1.15 var(--text);letter-spacing:.01em}
+.hd__mark{display:flex;align-items:center;min-height:48px;margin-right:auto}
+.hd__mark .hd__logo{height:48px;width:auto}
+.hd__word{display:block;height:58px;width:auto}   /* the client's lettering, as drawn: white letters with their dark outline; the only mark once the hero is passed */
 .hd__nav{display:flex;gap:var(--s4);font:500 16px var(--text)}
 .hd__nav a{padding:10px 0;opacity:.78;transition:opacity .2s}
 .hd__nav a:hover{opacity:1}
@@ -362,7 +363,7 @@ main{position:relative}
   .hd__tn{display:none}
   .hd{gap:var(--s3)}
   .hd__nav{gap:var(--s3);white-space:nowrap}
-  .hd__name{display:none}
+  .hd__word{height:48px}
   .ledger__row{grid-template-columns:1fr 2fr auto;}
   .ledger__k{grid-column:1/-1}
   .ledger__p{grid-column:2/3}
@@ -384,7 +385,7 @@ main{position:relative}
 
 /* ---------- tablet + mobile ---------- */
 @media (max-width:899px){
-  :root{--hd:64px}
+  :root{--hd:68px}
   .hd__nav{display:none}
   .hd__menu{display:block}
   .hd__tel{margin-left:auto;width:44px;padding:0;justify-content:center}
@@ -393,9 +394,9 @@ main{position:relative}
   .hd__mark{flex:none}
   .hd__sell{min-height:44px;padding:0 12px;font-size:15px;white-space:nowrap}
   .hd__mark{margin-right:0}
-  .hd__mark img{height:42px}
-  .hd__name{display:none}
-  .hd.is-over .hd__mark img{transform:translateY(12px) scale(1.75)}
+  .hd__mark .hd__logo{height:42px;margin-top:-21px}
+  .hd__word{height:40px}
+  .hd.is-over .hd__mark .hd__logo{transform:translateY(12px) scale(1.75)}
 
   /* hero on a phone: the photo sized so the car stays (nearly) whole, the copy on night beneath it */
   .cover{height:auto;min-height:0;display:flex;flex-direction:column}
