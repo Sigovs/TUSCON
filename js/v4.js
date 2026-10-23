@@ -285,20 +285,11 @@
     update();
   }
 
-  /* ---- Search: decade → the live site's registration[min]/[max]; empty fields are not sent ---- */
+  /* ---- Search: goes to our inventory page (v4), which reads make / decade / model; empty fields are not sent ---- */
   const form = $('[data-search]');
   form?.addEventListener('submit', () => {
-    const dec = $('[data-decade]', form);
-    if (dec?.value) {
-      const [min, max] = dec.value.split('-');
-      for (const [n, v] of [['registration[min]', min], ['registration[max]', max]]) {
-        const i = Object.assign(document.createElement('input'), { type: 'hidden', name: n, value: v });
-        i.dataset.tmp = ''; form.appendChild(i);
-      }
-    }
-    if (dec) dec.disabled = true;
     $$('select, input[type=text]', form).forEach(f => { if (!f.value.trim()) f.disabled = true; });
-    setTimeout(() => { $$('[disabled]', form).forEach(f => f.disabled = false); $$('[data-tmp]', form).forEach(f => f.remove()); }, 0);
+    setTimeout(() => $$('[disabled]', form).forEach(f => f.disabled = false), 0);
   });
 
   /* ---- Map: real and usable; loads near the screen; zoom/drag only after a click (never on touch) ---- */

@@ -130,6 +130,11 @@
     if (u.get('q')) state.q = u.get('q');
     if (u.get('sort')) state.sort = u.get('sort');
     G.forEach(g => { if (u.get(g)) state[g] = u.get(g).split(','); });
+    // arriving from the homepage search (make / decade / model): fold them into the side panel's own state
+    const fromHome = [u.get('make'), u.get('model')].filter(Boolean).map(x => x.replace(/-/g, ' ')).join(' ').trim();
+    if (fromHome) state.q = [state.q, fromHome].filter(Boolean).join(' ');
+    const dec = u.get('decade');
+    if (dec) { const y = +dec.split('-')[0]; state.era = [y < 1940 ? 'pre' : y < 1960 ? '4050' : y < 1980 ? '6070' : '80']; }
 
     const paint = () => {
       qIn.value = state.q; sortSel.value = state.sort; sortSel._sync?.();
