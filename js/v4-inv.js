@@ -116,6 +116,99 @@
     apply(false);
   }
 
+  /* =================================================================== SRP · search on the side (client, 25 Oct)
+     Keyword + Type / Era / Price checkboxes (several may be ticked; none ticked = all), sort above the list.
+     State lives in the URL (?q=&type=car,bike&era=&price=&sort=) so a search can be shared. */
+  const side = $('[data-side]');
+  if (grid && side) {
+    const cards = $$('[data-card]', grid), brk = $('[data-break]', grid);
+    const form = $('[data-side-f]', side), qIn = $('[data-side-q]', side), sortSel = $('[data-side-sort]');
+    const empty = $('[data-empty]'), live = $('[data-live]'), shownN = $('[data-shown-n]'), sideN = $('[data-side-n]'), chips = $('[data-chips]');
+    const G = ['type', 'era', 'price'], KEY = { type: 'st', era: 'era', price: 'pb' };
+    const state = { q: '', sort: 'year-asc', type: [], era: [], price: [] };
+    const u = new URLSearchParams(location.search);
+    if (u.get('q')) state.q = u.get('q');
+    if (u.get('sort')) state.sort = u.get('sort');
+    G.forEach(g => { if (u.get(g)) state[g] = u.get(g).split(','); });
+
+    const paint = () => {
+      qIn.value = state.q; sortSel.value = state.sort; sortSel._sync?.();
+      $$('input[type="checkbox"]', form).forEach(b => { b.checked = state[b.name].includes(b.value); });
+    };
+    const apply = animate => {
+      const words = state.q.toLowerCase().replace(/[“”"’']/g, '').split(/\s+/).filter(Boolean);
+      const vis = cards.filter(c => G.every(g => !state[g].length || state[g].includes(c.dataset[KEY[g]])) && words.every(w => c.dataset.q.includes(w)));
+      const [key, dir] = state.sort.split('-');
+      const num = c => key === 'price' ? (+c.dataset.price || (dir === 'asc' ? Infinity : -Infinity)) : +c.dataset.year;
+      vis.sort((a, b) => (num(a) - num(b)) * (dir === 'asc' ? 1 : -1) || (+a.dataset.n - +b.dataset.n));
+      cards.forEach(c => { c.hidden = !vis.includes(c); c.classList.remove('is-in'); });
+      vis.forEach(c => grid.appendChild(c));
+      // the sell break comes after full rows only (Alex, 25 Oct: "fill everything"): 2 rows of tiles, or 4 rows of the list
+      const cols = getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length || 1;
+      const at = cols * (cols > 1 ? 2 : 4);
+      if (brk) { brk.hidden = vis.length <= at; if (vis.length > at) grid.insertBefore(brk, vis[at]); }
+      if (empty) empty.hidden = vis.length > 0;
+      if (shownN) shownN.textContent = vis.length;
+      const n = G.reduce((t, g) => t + state[g].length, 0) + (words.length ? 1 : 0);
+      if (sideN) sideN.textContent = n ? `${n} on · ${vis.length} shown` : '';
+      // the active filters as small pills above the list; × removes one (Alex, 25 Oct)
+      if (chips) {
+        const X = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg>';
+        const on = [];
+        if (state.q) on.push({ k: 'q', label: `“${state.q}”` });
+        G.forEach(g => state[g].forEach(v => on.push({ k: g, v, label: $(`input[name="${g}"][value="${v}"]`, form)?.closest('.opt')?.querySelector('.opt__l')?.textContent || v })));
+        chips.innerHTML = on.map((c, n) => `<button type="button" class="chip" data-chip="${n}" aria-label="Remove ${c.label.replace(/"/g, '&quot;')}"><span>${c.label.replace(/</g, '&lt;')}</span>${X}</button>`).join('') +
+          (on.length > 1 ? '<button type="button" class="chip chip--all" data-chip="all">Clear all</button>' : '');
+        chips.hidden = !on.length;
+        $$('[data-chip]', chips).forEach(b => b.addEventListener('click', () => {
+          if (b.dataset.chip === 'all') return clear();
+          const c = on[+b.dataset.chip];
+          if (c.k === 'q') state.q = ''; else state[c.k] = state[c.k].filter(v => v !== c.v);
+          paint(); apply(true);
+        }));
+      }
+      if (live) live.textContent = `${vis.length} ${vis.length === 1 ? 'vehicle' : 'vehicles'} shown`;
+      if (animate && !reduce) vis.forEach((c, i) => { c.style.animationDelay = `${Math.min(i, 6) * 40}ms`; c.classList.add('is-in'); });
+      const p = new URLSearchParams();
+      if (state.q) p.set('q', state.q);
+      G.forEach(g => { if (state[g].length) p.set(g, state[g].join(',')); });
+      if (state.sort !== 'year-asc') p.set('sort', state.sort);
+      if (grid.classList.contains('srp__list')) p.set('view', 'list');
+      history.replaceState(null, '', p.toString() ? `?${p}` : location.pathname);
+    };
+    let t;
+    qIn.addEventListener('input', () => { clearTimeout(t); t = setTimeout(() => { state.q = qIn.value.trim(); apply(true); }, 160); });
+    form.addEventListener('change', e => {
+      const b = e.target; if (b.type !== 'checkbox') return;
+      state[b.name] = $$(`input[name="${b.name}"]:checked`, form).map(x => x.value); apply(true);
+    });
+    sortSel.addEventListener('change', () => { state.sort = sortSel.value; apply(true); });
+    const clear = () => { state.q = ''; G.forEach(g => { state[g] = []; }); paint(); apply(true); };
+    form.addEventListener('reset', e => { e.preventDefault(); clear(); });
+    $('[data-side-reset]')?.addEventListener('click', () => { clear(); qIn.focus(); });
+
+    // view: tiles (default) or list — kept in the URL and remembered on this device
+    const views = $$('[data-view]');
+    const setView = (v, save) => {
+      v = v === 'list' ? 'list' : 'tiles';
+      grid.classList.toggle('srp__tiles', v === 'tiles'); grid.classList.toggle('srp__list', v === 'list');
+      views.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
+      const p = new URLSearchParams(location.search); v === 'list' ? p.set('view', 'list') : p.delete('view');
+      history.replaceState(null, '', p.toString() ? `?${p}` : location.pathname);
+      if (save) try { localStorage.setItem('tcmc-view', v); } catch (e) {}
+    };
+    let v0 = u.get('view'); if (!v0) try { v0 = localStorage.getItem('tcmc-view'); } catch (e) {}
+    views.forEach(b => b.addEventListener('click', () => { setView(b.dataset.view, true); apply(false); }));
+    let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => apply(false), 150); });
+
+    // phones: the panel folds behind its summary; from 900px it is always open
+    const d = $('[data-side-d]', side), mq = matchMedia('(min-width:900px)');
+    const fold = () => { if (mq.matches) d.open = true; else if (!state.q && G.every(g => !state[g].length)) d.open = false; };
+    mq.addEventListener('change', fold); fold();
+    d.addEventListener('toggle', () => { if (mq.matches && !d.open) d.open = true; });
+    setView(v0); paint(); apply(false);
+  }
+
   /* ---- Mail forms (the inquiry panel, the visit request). Mock-up: the button opens the visitor's email app with the message ---- */
   $$('[data-mail-form]').forEach(form => {
     const done = form.parentElement.querySelector('[data-mail-done]');
@@ -129,11 +222,22 @@
     });
   });
 
+  /* ---- Finance in the record card: to the lenders, clear of the header (Lenis' own anchor handling stopped ~490px short here) ---- */
+  $$('a[href="#finance"]').forEach(a => a.addEventListener('click', e => {
+    const t = $('#finance'); if (!t) return;
+    e.preventDefault(); e.stopPropagation();
+    const y = t.getBoundingClientRect().top + scrollY - ($('[data-hd]')?.offsetHeight || 0) - 24;
+    lenis ? lenis.scrollTo(y) : scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+    history.replaceState(null, '', '#finance');
+  }));
+
   /* ---- Inquire: the slide-over panel ---- */
   const inq = $('[data-inq]');
   if (inq && typeof inq.showModal === 'function') {
     const form = $('[data-mail-form]', inq);
+    const msg = form && $('textarea[name="message"]', form), msg0 = msg?.value;
     $$('[data-inq-open]').forEach(b => b.addEventListener('click', e => {
+      if (msg) msg.value = b.dataset.inqMsg || msg0;   // Trade-in opens the same panel with its own message
       e.preventDefault(); inq.showModal(); lenis?.stop();
       if (form && !form.hidden) $('input', form)?.focus({ preventScroll: true });
     }));
@@ -199,8 +303,18 @@
       f.title = `Video ${vk + 1} of the ${G.name}`;
       f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
       f.allowFullscreen = true;
+      f.referrerPolicy = 'strict-origin-when-cross-origin';   // the page sends no referrer (client CDN hotlink rule); YouTube refuses to play without one (error 153)
       video.appendChild(f);
     });
+
+    // every car has a video (client, 25 Oct): called out on the photograph itself, not only as the first thumbnail
+    if (vids.length) {
+      const pill = document.createElement('button');
+      pill.type = 'button'; pill.className = 'viewer__vpill';
+      pill.innerHTML = `<span class="viewer__vpill-i"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.2v9.6L13 8z"/></svg></span><span>Play video${vids.length > 1 ? `s (${vids.length})` : ""}</span>`;
+      pill.addEventListener('click', () => { showVideo(0); $('[data-play]')?.click(); });
+      $('[data-stage]', viewer).appendChild(pill);
+    }
 
     // swipe on touch
     let x0 = null;
@@ -240,6 +354,20 @@
     img.addEventListener('click', () => lbOpen(i));
     img.style.cursor = 'zoom-in';
     $$('[data-open]').forEach(b => b.addEventListener('click', () => lbOpen(+b.dataset.open)));
+
+    // the strip shows a few large thumbnails; the last visible one becomes "+N" and opens every photo full screen,
+    // and the photo count beside it is a button to the same view (Alex, 25 Oct: "larger, fewer, single out the video")
+    const lis = $$('.vthumbs li');
+    const more = () => {
+      lis.forEach(li => { li.classList.remove('is-more'); delete li.dataset.more; });
+      const vis = lis.filter(li => li.offsetParent !== null), last = vis[vis.length - 1];
+      const shownPhotos = vis.filter(li => li.querySelector('[data-go]')).length;
+      if (last && last.querySelector('[data-go]') && N > shownPhotos) { last.classList.add('is-more'); last.dataset.more = `+${N - shownPhotos + 1}`; }
+    };
+    lis.forEach(li => li.addEventListener('click', e => { if (!li.classList.contains('is-more')) return; e.stopPropagation(); e.preventDefault(); lbOpen(+li.querySelector('[data-go]').dataset.go); }, true));
+    more(); addEventListener('resize', more);
+    const k = $('.vchaps__k');
+    if (k) { const b = document.createElement('button'); b.type = 'button'; b.className = 'mono vchaps__k vchaps__all'; b.textContent = `View all ${N} photos`; b.addEventListener('click', () => lbOpen(i)); k.replaceWith(b); }
     $('[data-lb-prev]').addEventListener('click', () => lbShow(j - 1));
     $('[data-lb-next]').addEventListener('click', () => lbShow(j + 1));
     $('[data-lb-close]').addEventListener('click', () => lb.close());

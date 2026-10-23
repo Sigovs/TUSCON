@@ -1,0 +1,267 @@
+<!doctype html>
+<!-- v4_2 — the SRP as it was before the client feedback of 25 Oct 2026 (filter bar on top, 3-column grid).
+     Kept on purpose for a side-by-side with inventory_v4.html (search on the side). Not linked from the site. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">  <!-- mock-up: the client CDN refuses foreign referrers (hotlink rule) -->
+<title>Current inventory — Tucson Classic Motor Co.</title>
+<meta name="description" content="Vintage and specialty vehicles for sale at Tucson Classic Motor Co., 2540 E. Grant Rd., Tucson. Showroom by appointment.">
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://tucsonclassics-media.tucsonclassics.com">
+<link rel="stylesheet" href="css/fonts-v2.css">
+<link rel="stylesheet" href="vendor/lenis.css">
+<link rel="stylesheet" href="css/v4.css">
+<link rel="stylesheet" href="css/v4-inv.css">
+</head>
+<body class="sub">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd" data-hd>
+  <a class="hd__mark" href="index_v4.html" aria-label="Tucson Classic Motor Co., home">
+    <img class="hd__logo" src="assets/img/logo.svg" alt="" width="122" height="101">
+    <img class="hd__word" src="assets/img/wordmark.svg" alt="" width="334" height="128">
+  </a>
+  <nav class="hd__nav" aria-label="Primary">
+    <a href="index_v4.html">Home</a><a href="inventory_v4.html" aria-current="page">Current Inventory</a><a href="https://tucsonclassics.com/sold-vehicles/">Sold Inventory</a><a href="https://tucsonclassics.com/financing/">Financing</a>
+  </nav>
+  <a class="hd__tel" href="tel:+15203509332" aria-label="Call 520-350-9332"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5.6 2.2 4 1.8 2.2 3.6c0 5.6 4.6 10.2 10.2 10.2l1.8-1.8-.4-1.6-2.8-1-1.3 1.3a7 7 0 0 1-3.5-3.5L7.5 5.9z"/></svg><span class="hd__tn">520-350-9332</span></a>
+  <a class="hd__sell" href="https://tucsonclassics.com/sell-your-car/">Sell Your Vehicle</a>
+  <span class="hd__prog" aria-hidden="true" data-hd-prog></span>
+  <button class="hd__menu" type="button" data-menu-open aria-haspopup="dialog" aria-controls="menu">Menu</button>
+</header>
+
+<dialog class="menu" id="menu" aria-label="Menu" data-lenis-prevent>
+  <div class="menu__top"><span class="mono">Tucson Classic Motor Co.</span><button type="button" class="hd__menu is-close" data-menu-close>Close</button></div>
+  <nav class="menu__nav" aria-label="Menu">
+    <a href="index_v4.html">Home</a>
+    <a href="inventory_v4.html">Current Inventory</a>
+    <a href="https://tucsonclassics.com/sold-vehicles/">Sold Inventory</a>
+    <a href="https://tucsonclassics.com/financing/">Financing</a>
+    <a href="https://tucsonclassics.com/sell-your-car/">Sell Your Vehicle</a>
+  </nav>
+  <p class="menu__foot"><a href="tel:+15203509332">520-350-9332</a><br>2540 E. Grant Rd., Tucson<br>By appointment</p>
+</dialog>
+
+<main id="main" class="srp">
+  <section class="srp__head" aria-labelledby="srp-h">
+    <p class="mono srp__crumb"><a href="index_v4.html">Home</a><span aria-hidden="true">/</span>Inventory</p>
+    <div class="srp__title">
+      <h1 class="disp srp__h" id="srp-h">Current inventory</h1>
+      <p class="srp__count"><b data-count-n>12</b> <span class="mono">vehicles</span></p>
+    </div>
+    <p class="srp__lead">We know our cars because we own our cars. Every one is on the floor at 2540 E. Grant Rd. — showroom by appointment.</p>
+  </section>
+
+  <div class="srp__bar" data-bar>
+    <div class="srp__bar-in">
+      <div class="seg" role="group" aria-label="Show">
+        <button type="button" class="seg__b" data-f-st="all" aria-pressed="true">All <span class="seg__n">12</span></button>
+        <button type="button" class="seg__b" data-f-st="car" aria-pressed="false">Cars <span class="seg__n">9</span></button>
+        <button type="button" class="seg__b" data-f-st="bike" aria-pressed="false">Motorcycles <span class="seg__n">3</span></button>
+      </div>
+      <div class="srp__sel">
+        <div class="pick"><span class="mono">Era</span>
+          <select data-f-era>
+            <option value="all">All years</option>
+            <option value="pre">Before 1940</option>
+            <option value="4050">1940s – 50s</option>
+            <option value="6070">1960s – 70s</option>
+            <option value="80">1980 and newer</option>
+          </select>
+        </div>
+        <div class="pick"><span class="mono">Sort</span>
+          <select data-f-sort>
+            <option value="year-asc">Oldest first</option>
+            <option value="year-desc">Newest first</option>
+            <option value="price-asc">Lowest price</option>
+            <option value="price-desc">Highest price</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="srp__grid-wrap" aria-label="Vehicles">
+    <p class="sr" role="status" aria-live="polite" data-live></p>
+    <ul class="srp__grid" data-grid>
+      <li class="car" data-card data-st="bike" data-era="pre" data-year="1912" data-price="115000" data-n="0">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/1912-marsh-metz-960.jpg" srcset="assets/img/inv/1912-marsh-metz-560.jpg 560w, assets/img/inv/1912-marsh-metz-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="1912 Marsh Metz V-twin motorcycle" loading="eager" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1912-marsh-metz-f1-960.jpg" data-srcset="assets/img/inv/1912-marsh-metz-f1-560.jpg 560w, assets/img/inv/1912-marsh-metz-f1-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1912-marsh-metz-f2-960.jpg" data-srcset="assets/img/inv/1912-marsh-metz-f2-560.jpg 560w, assets/img/inv/1912-marsh-metz-f2-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1912-marsh-metz-f3-960.jpg" data-srcset="assets/img/inv/1912-marsh-metz-f3-560.jpg 560w, assets/img/inv/1912-marsh-metz-f3-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_1912-marsh-metz.html">
+            <span class="car__meta mono"><span>1912</span><span>Marsh Metz</span></span>
+            <span class="car__n">V-twin motorcycle</span>
+            <span class="car__ex">“Marsh, later Marsh Metz, only existed from 1900 through 1913.”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$115,000</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+      <li class="car" data-card data-st="car" data-era="pre" data-year="1932" data-price="59500" data-n="1">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-960.jpg" srcset="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-560.jpg 560w, assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="1932 Ford Blown 3-window coupe, original Henry steel" loading="eager" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-f1-960.jpg" data-srcset="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-f1-560.jpg 560w, assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-f1-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-f2-960.jpg" data-srcset="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-f2-560.jpg 560w, assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-f2-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-f3-960.jpg" data-srcset="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-f3-560.jpg 560w, assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-f3-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_1932-ford-blown-original-henry-steel-3-window-coupe.html">
+            <span class="car__meta mono"><span>1932</span><span>Ford</span></span>
+            <span class="car__n">Blown 3-window coupe, original Henry steel</span>
+            <span class="car__ex">“Original Hotrod and real Henry Ford Steel body.”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$59,500</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+      <li class="car" data-card data-st="car" data-era="4050" data-year="1946" data-price="69500" data-n="2">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/1946-ford-coupe-blown-hh-flathead-960.jpg" srcset="assets/img/inv/1946-ford-coupe-blown-hh-flathead-560.jpg 560w, assets/img/inv/1946-ford-coupe-blown-hh-flathead-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="1946 Ford Business coupe, blown H&amp;H flathead" loading="eager" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1946-ford-coupe-blown-hh-flathead-f1-960.jpg" data-srcset="assets/img/inv/1946-ford-coupe-blown-hh-flathead-f1-560.jpg 560w, assets/img/inv/1946-ford-coupe-blown-hh-flathead-f1-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1946-ford-coupe-blown-hh-flathead-f2-960.jpg" data-srcset="assets/img/inv/1946-ford-coupe-blown-hh-flathead-f2-560.jpg 560w, assets/img/inv/1946-ford-coupe-blown-hh-flathead-f2-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1946-ford-coupe-blown-hh-flathead-f3-960.jpg" data-srcset="assets/img/inv/1946-ford-coupe-blown-hh-flathead-f3-560.jpg 560w, assets/img/inv/1946-ford-coupe-blown-hh-flathead-f3-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_1946-ford-coupe-blown-hh-flathead.html">
+            <span class="car__meta mono"><span>1946</span><span>Ford</span></span>
+            <span class="car__n">Business coupe, blown H&amp;H flathead</span>
+            <span class="car__ex">“This car remained with the same family for over 70 years!”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$69,500</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+      <li class="car" data-card data-st="bike" data-era="4050" data-year="1954" data-price="44500" data-n="3">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-960.jpg" srcset="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-560.jpg 560w, assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="1954 BSA A7 Shooting Star Daytona race bike" loading="lazy" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-f1-960.jpg" data-srcset="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-f1-560.jpg 560w, assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-f1-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-f2-960.jpg" data-srcset="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-f2-560.jpg 560w, assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-f2-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-f3-960.jpg" data-srcset="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-f3-560.jpg 560w, assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-f3-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_1954-bsa-a7-shooting-star-daytona-race-bike.html">
+            <span class="car__meta mono"><span>1954</span><span>BSA</span></span>
+            <span class="car__n">A7 Shooting Star Daytona race bike</span>
+            <span class="car__ex">“This bike placed 5th in BSA’s 1st-5th sweep of the 1954 Daytona 200 race.”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$44,500</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+      <li class="car" data-card data-st="car" data-era="4050" data-year="1954" data-price="39500" data-n="4">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/1954-hillegass-sprint-car-960.jpg" srcset="assets/img/inv/1954-hillegass-sprint-car-560.jpg 560w, assets/img/inv/1954-hillegass-sprint-car-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="1954 Hillegass Sprint car" loading="lazy" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1954-hillegass-sprint-car-f1-960.jpg" data-srcset="assets/img/inv/1954-hillegass-sprint-car-f1-560.jpg 560w, assets/img/inv/1954-hillegass-sprint-car-f1-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1954-hillegass-sprint-car-f2-960.jpg" data-srcset="assets/img/inv/1954-hillegass-sprint-car-f2-560.jpg 560w, assets/img/inv/1954-hillegass-sprint-car-f2-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1954-hillegass-sprint-car-f3-960.jpg" data-srcset="assets/img/inv/1954-hillegass-sprint-car-f3-560.jpg 560w, assets/img/inv/1954-hillegass-sprint-car-f3-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_1954-hillegass-sprint-car.html">
+            <span class="car__meta mono"><span>1954</span><span>Hillegass</span></span>
+            <span class="car__n">Sprint car</span>
+            <span class="car__ex">“It may be the most original, unmolested, early tube frame-torsion bar suspended Hillegass in existence.”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$39,500</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+      <li class="car" data-card data-st="car" data-era="4050" data-year="1956" data-price="39900" data-n="5">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/1956-oldsmobile-88-960.jpg" srcset="assets/img/inv/1956-oldsmobile-88-560.jpg 560w, assets/img/inv/1956-oldsmobile-88-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="1956 Oldsmobile Super 88, 28k original miles" loading="lazy" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1956-oldsmobile-88-f1-960.jpg" data-srcset="assets/img/inv/1956-oldsmobile-88-f1-560.jpg 560w, assets/img/inv/1956-oldsmobile-88-f1-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1956-oldsmobile-88-f2-960.jpg" data-srcset="assets/img/inv/1956-oldsmobile-88-f2-560.jpg 560w, assets/img/inv/1956-oldsmobile-88-f2-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1956-oldsmobile-88-f3-960.jpg" data-srcset="assets/img/inv/1956-oldsmobile-88-f3-560.jpg 560w, assets/img/inv/1956-oldsmobile-88-f3-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_1956-oldsmobile-88.html">
+            <span class="car__meta mono"><span>1956</span><span>Oldsmobile</span></span>
+            <span class="car__n">Super 88, 28k original miles</span>
+            <span class="car__ex">“…just 28,854 original miles… backed by a complete and documented ownership history.”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$39,900</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+      <li class="srp__break" data-break aria-hidden="false">
+        <div class="srp__break-c">
+          <p class="mono srp__break-k">Selling a classic?</p>
+          <p class="srp__break-h">We are always looking for classic and special-interest vehicles to purchase.</p>
+        </div>
+        <div class="srp__break-go">
+          <a class="btn btn--act" href="https://tucsonclassics.com/sell-your-car/">Tell us about your car <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></a>
+          <a class="srp__break-tel" href="tel:+15203509332"><span class="mono">Prefer to talk?</span><span>520-350-9332</span></a>
+        </div>
+      </li>
+      <li class="car" data-card data-st="bike" data-era="4050" data-year="1959" data-price="39900" data-n="6">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-960.jpg" srcset="assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-560.jpg 560w, assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="1959 Harley-Davidson Hells Angels ’69 movie bike" loading="lazy" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-f5-960.jpg" data-srcset="assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-f5-560.jpg 560w, assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-f5-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-f6-960.jpg" data-srcset="assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-f6-560.jpg 560w, assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-f6-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-f7-960.jpg" data-srcset="assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-f7-560.jpg 560w, assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-f7-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_1959-harley-davidson-hells-angels-69-movie-bike.html">
+            <span class="car__meta mono"><span>1959</span><span>Harley-Davidson</span></span>
+            <span class="car__n">“Hells Angels ’69” movie bike</span>
+            <span class="car__ex">“Only 20 miles of break-in.”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$39,900</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+      <li class="car" data-card data-st="car" data-era="6070" data-year="1963" data-price="16500" data-n="7">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/1963-ford-falcon-coming-soon-960.jpg" srcset="assets/img/inv/1963-ford-falcon-coming-soon-560.jpg 560w, assets/img/inv/1963-ford-falcon-coming-soon-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="1963 Ford Falcon Futura 260 V8" loading="lazy" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1963-ford-falcon-coming-soon-f1-960.jpg" data-srcset="assets/img/inv/1963-ford-falcon-coming-soon-f1-560.jpg 560w, assets/img/inv/1963-ford-falcon-coming-soon-f1-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1963-ford-falcon-coming-soon-f2-960.jpg" data-srcset="assets/img/inv/1963-ford-falcon-coming-soon-f2-560.jpg 560w, assets/img/inv/1963-ford-falcon-coming-soon-f2-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1963-ford-falcon-coming-soon-f3-960.jpg" data-srcset="assets/img/inv/1963-ford-falcon-coming-soon-f3-560.jpg 560w, assets/img/inv/1963-ford-falcon-coming-soon-f3-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_1963-ford-falcon-coming-soon.html">
+            <span class="car__meta mono"><span>1963</span><span>Ford</span></span>
+            <span class="car__n">Falcon Futura 260 V8</span>
+            <span class="car__ex">“It was professionally repainted in its original color of “Tucson Yellow”, code “R”.”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$16,500</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+      <li class="car" data-card data-st="car" data-era="6070" data-year="1973" data-price="35000" data-n="8">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/1973-lincoln-town-coupe-coming-soon-960.jpg" srcset="assets/img/inv/1973-lincoln-town-coupe-coming-soon-560.jpg 560w, assets/img/inv/1973-lincoln-town-coupe-coming-soon-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="1973 Lincoln Town Coupe, 25k miles" loading="lazy" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1973-lincoln-town-coupe-coming-soon-f1-960.jpg" data-srcset="assets/img/inv/1973-lincoln-town-coupe-coming-soon-f1-560.jpg 560w, assets/img/inv/1973-lincoln-town-coupe-coming-soon-f1-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1973-lincoln-town-coupe-coming-soon-f2-960.jpg" data-srcset="assets/img/inv/1973-lincoln-town-coupe-coming-soon-f2-560.jpg 560w, assets/img/inv/1973-lincoln-town-coupe-coming-soon-f2-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1973-lincoln-town-coupe-coming-soon-f3-960.jpg" data-srcset="assets/img/inv/1973-lincoln-town-coupe-coming-soon-f3-560.jpg 560w, assets/img/inv/1973-lincoln-town-coupe-coming-soon-f3-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_1973-lincoln-town-coupe-coming-soon.html">
+            <span class="car__meta mono"><span>1973</span><span>Lincoln</span></span>
+            <span class="car__n">Town Coupe, 25k miles</span>
+            <span class="car__ex">“1973 Lincoln Town coupe with only 25,047 miles since new.”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$35,000</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+      <li class="car" data-card data-st="car" data-era="80" data-year="1983" data-price="49500" data-n="9">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/1983-don-yenko-imsa-camaro-960.jpg" srcset="assets/img/inv/1983-don-yenko-imsa-camaro-560.jpg 560w, assets/img/inv/1983-don-yenko-imsa-camaro-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="1983 Chevrolet Don Yenko IMSA Camaro" loading="lazy" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1983-don-yenko-imsa-camaro-f142-960.jpg" data-srcset="assets/img/inv/1983-don-yenko-imsa-camaro-f142-560.jpg 560w, assets/img/inv/1983-don-yenko-imsa-camaro-f142-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1983-don-yenko-imsa-camaro-f143-960.jpg" data-srcset="assets/img/inv/1983-don-yenko-imsa-camaro-f143-560.jpg 560w, assets/img/inv/1983-don-yenko-imsa-camaro-f143-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1983-don-yenko-imsa-camaro-f144-960.jpg" data-srcset="assets/img/inv/1983-don-yenko-imsa-camaro-f144-560.jpg 560w, assets/img/inv/1983-don-yenko-imsa-camaro-f144-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_1983-don-yenko-imsa-camaro.html">
+            <span class="car__meta mono"><span>1983</span><span>Chevrolet</span></span>
+            <span class="car__n">Don Yenko IMSA Camaro</span>
+            <span class="car__ex">“This was the first of several road race cars that Dillon would build.”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$49,500</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+      <li class="car" data-card data-st="car" data-era="80" data-year="1995" data-price="32500" data-n="10">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-960.jpg" srcset="assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-560.jpg 560w, assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="1995 Chevrolet Corvette Indianapolis 500 Pace Car Edition" loading="lazy" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-f1-960.jpg" data-srcset="assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-f1-560.jpg 560w, assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-f1-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-f2-960.jpg" data-srcset="assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-f2-560.jpg 560w, assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-f2-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-f3-960.jpg" data-srcset="assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-f3-560.jpg 560w, assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-f3-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_1995-corvette-indianapolis-500-pace-car-edition.html">
+            <span class="car__meta mono"><span>1995</span><span>Chevrolet</span></span>
+            <span class="car__n">Corvette Indianapolis 500 Pace Car Edition</span>
+            <span class="car__ex">“The factory two-tone Dark Purple Metallic and Arctic White paint shines like new.”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$32,500</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+      <li class="car" data-card data-st="car" data-era="80" data-year="2005" data-price="29500" data-n="11">
+        <div class="car__a">
+          <span class="car__img" data-gal><img class="car__f is-on" src="assets/img/inv/2005-cadillac-xlr-with-32k-miles-960.jpg" srcset="assets/img/inv/2005-cadillac-xlr-with-32k-miles-560.jpg 560w, assets/img/inv/2005-cadillac-xlr-with-32k-miles-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="2005 Cadillac XLR, 32k miles" loading="lazy" width="960" height="640"><img class="car__f" data-src="assets/img/inv/2005-cadillac-xlr-with-32k-miles-f1-960.jpg" data-srcset="assets/img/inv/2005-cadillac-xlr-with-32k-miles-f1-560.jpg 560w, assets/img/inv/2005-cadillac-xlr-with-32k-miles-f1-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/2005-cadillac-xlr-with-32k-miles-f2-960.jpg" data-srcset="assets/img/inv/2005-cadillac-xlr-with-32k-miles-f2-560.jpg 560w, assets/img/inv/2005-cadillac-xlr-with-32k-miles-f2-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><img class="car__f" data-src="assets/img/inv/2005-cadillac-xlr-with-32k-miles-f3-960.jpg" data-srcset="assets/img/inv/2005-cadillac-xlr-with-32k-miles-f3-560.jpg 560w, assets/img/inv/2005-cadillac-xlr-with-32k-miles-f3-960.jpg 960w" sizes="(min-width:1180px) 30vw, (min-width:700px) 46vw, 92vw" alt="" width="960" height="640"><button type="button" class="arrow car__arr car__arr--p" data-gal-prev aria-label="Previous photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 8h-11M7 3.5L2.5 8 7 12.5"/></svg></button><button type="button" class="arrow car__arr car__arr--n" data-gal-next aria-label="Next photo"><svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></button><span class="car__ct mono" aria-hidden="true"><b data-gal-cur>1</b>/4</span></span>
+          <a class="car__t" href="vehicle_v4_2005-cadillac-xlr-with-32k-miles.html">
+            <span class="car__meta mono"><span>2005</span><span>Cadillac</span></span>
+            <span class="car__n">XLR, 32k miles</span>
+            <span class="car__ex">“Always garaged, zero rust, no accidents, and smoke-free.”</span>
+            <span class="car__row"><span class="mono">Price</span><b class="car__price">$29,500</b><span class="car__go">View <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 8h11M9 3.5L13.5 8 9 12.5"/></svg></span></span>
+          </a>
+        </div>
+      </li>
+    </ul>
+    <div class="srp__empty" data-empty hidden>
+      <p class="srp__empty-h">Nothing in that combination right now.</p>
+      <p>New cars arrive often — call <a href="tel:+15203509332">520-350-9332</a> and tell us what you are looking for.</p>
+      <button type="button" class="btn btn--line" data-reset>Show all 12 vehicles</button>
+    </div>
+  </section>
+
+  <section class="srp__more" aria-label="More">
+    <div class="srp__more-in">
+      <p class="mono">Sold inventory</p>
+      <p class="srp__more-h">Missed one? Browse the cars that have already found new homes.</p>
+      <a class="btn btn--line" href="https://tucsonclassics.com/sold-vehicles/">Sold inventory <svg class="ic" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M6 4.5h5.5V10"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer class="ft-wrap">
+<div class="ft">
+  <div class="ft__cols">
+    <div><p class="mono">Cars</p><a href="inventory_v4.html">Current Inventory</a><a href="https://tucsonclassics.com/sold-vehicles/">Sold Inventory</a><a href="https://tucsonclassics.com/financing/">Financing</a></div>
+    <div><p class="mono">Sellers</p><a href="https://tucsonclassics.com/sell-your-car/">Sell Your Vehicle</a><a href="tel:+15203509332">520-350-9332</a></div>
+    <div><p class="mono">Visit</p><span>2540 E. Grant Rd.</span><span>Tucson, AZ 85716</span><span>By appointment</span></div>
+    <div><p class="mono">Write</p><a href="mailto:Info@TucsonClassics.com">Info@TucsonClassics.com</a></div>
+  </div>
+  <p class="ft__word" aria-hidden="true">Tucson Classic</p>
+  <div class="ft__legal"><span>© Tucson Classic Motor Co.</span><a class="ft__pw" href="https://www.allautonetwork.com/" target="_blank" rel="noopener">Powered by <b>All Auto Network</b></a></div>
+</div>
+</footer>
+
+<script src="vendor/lenis.min.js" defer></script>
+<script src="js/v4-inv.js" defer></script>
+<script src="js/v4-card.js" defer></script>
+</body>
+</html>

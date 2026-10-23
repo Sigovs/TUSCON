@@ -644,3 +644,7 @@ main{position:relative}
 .rev{background:var(--paper-2)}
 .ig{padding-top:var(--sec)}
 @media (max-width:899px){.ig{padding-top:var(--s6)}}
+
+/* 25 Oct · phones: with the lettering in the header (24 Oct) the bar ran 22px past 390 and cut "Menu" off */
+@media (max-width:899px){.hd{gap:12px}}
+@media (max-width:429px){.hd__tel{display:none}.hd__sell{margin-left:auto}}   /* the number stays in the menu */

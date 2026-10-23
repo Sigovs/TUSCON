@@ -410,3 +410,269 @@
   .viewer__img,.lb__img{transition:none}
   .dock{transition:none}
 }
+
+/* =====================================================================================================
+   SRP · search on the side (client, 25 Oct 2026: "search on the side, very straightforward … larger
+   descriptions … every car also has a video"). Scoped to .srp--side; inventory_v4_2.html keeps the bar.
+   ===================================================================================================== */
+.srp--side{--side:clamp(240px,19vw,290px)}
+.srp__body{display:grid;grid-template-columns:var(--side) minmax(0,1fr);gap:var(--s5) clamp(40px,4.4vw,80px);padding:var(--s4) var(--pad) var(--s7);border-top:1px solid var(--ink)}
+.srp--side .srp__grid-wrap{padding:0;min-width:0}
+
+/* the panel: one column of plain controls, sticky beside the list */
+.side{position:sticky;top:calc(var(--hd) + var(--s3));align-self:start;display:grid;gap:var(--s4)}
+.side__sum{display:none}
+.side__f{display:grid;gap:var(--s4)}
+.side__q{display:grid;gap:10px}
+.side__qbox{position:relative;display:block}
+.side__qbox .ic{position:absolute;left:14px;top:50%;width:16px;height:16px;margin-top:-8px;color:var(--ink-2);pointer-events:none}
+.side__qbox input{width:100%;min-height:52px;padding:0 14px 0 40px;border:1px solid var(--rule);border-radius:0;background:#fff;font:400 16px/1 var(--text);color:var(--ink);transition:border-color .15s}
+.side__qbox input:hover{border-color:var(--ink-2)}
+.side__qbox input:focus{outline:none;border-color:var(--ink)}
+.side__qbox input::placeholder{color:var(--ink-2);opacity:.8}
+.side__g{margin:0;padding:0;border:0;display:grid}
+.side__g legend{padding:0 0 10px;margin:0}
+.opt{position:relative;display:grid;grid-template-columns:18px minmax(0,1fr) auto;align-items:center;gap:12px;min-height:44px;border-top:1px solid var(--rule);cursor:pointer;color:var(--ink-2);transition:color .15s}
+.opt:last-child{border-bottom:1px solid var(--rule)}
+.opt input{appearance:none;-webkit-appearance:none;width:18px;height:18px;margin:0;border:1px solid var(--rule);border-radius:50%;background:#fff;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.opt input:checked{border-color:var(--ink);box-shadow:inset 0 0 0 4px #fff,inset 0 0 0 9px var(--ink)}
+.opt input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.opt:hover{color:var(--ink)}
+.opt:hover input{border-color:var(--ink)}
+.opt:has(input:checked){color:var(--ink)}
+.opt__l{font:500 15px/1.2 var(--text)}
+.opt__n{font:500 13px/1 var(--mono);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.side__reset{justify-self:start;min-height:44px;padding:0;border:0;background:none;font:500 15px/1 var(--text);color:var(--ink);border-bottom:1px solid var(--rule);cursor:pointer;transition:border-color .15s}
+.side__reset:hover{border-bottom-color:var(--ink)}
+.side__help{display:grid;gap:6px;padding-top:var(--s3);border-top:1px solid var(--ink)}
+.side__help a{font:400 clamp(22px,1.7vw,26px)/1.1 var(--disp);color:var(--ink)}
+
+/* the list head: how many are showing, and the order */
+.srp__res{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);padding-bottom:var(--s3);margin-bottom:var(--s4);border-bottom:1px solid var(--rule)}
+.srp__shown{color:var(--ink-2)}
+.srp__shown b{font:400 clamp(24px,1.9vw,30px)/1 var(--disp);color:var(--ink);font-variant-numeric:tabular-nums lining-nums;margin-right:4px}
+
+/* the list: one car per row — photograph left, the owner's words given room on the right */
+.srp--side .srp__list{grid-template-columns:minmax(0,1fr);gap:clamp(36px,3.2vw,52px)}
+.srp__list .car__a{display:grid;grid-template-columns:minmax(0,10fr) minmax(0,11fr);column-gap:clamp(28px,2.8vw,44px);align-items:stretch}
+.srp__list .car__img{align-self:start;width:100%}   /* stretched to the row, aspect-ratio would widen it past its column */
+.srp__list .car__t{padding:2px 0 0}
+.srp__list .car__meta{margin-top:0}
+.srp__list .car__n{font-size:clamp(26px,2vw,32px)}
+.car__desc{display:-webkit-box;margin-top:12px;font:400 16px/1.6 var(--text);color:var(--ink-2);-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;max-width:58ch}
+.srp__list .car__row{padding-top:var(--s3)}
+.srp--side .srp__break{margin:var(--s1) 0;grid-template-columns:minmax(0,1fr);gap:var(--s4)}
+.srp--side .srp__break-h{max-width:30ch}
+
+/* every car's video, flagged on its photograph */
+.car__vid{position:absolute;left:12px;bottom:10px;z-index:2;display:inline-flex;align-items:center;gap:6px;padding:6px 10px 5px 8px;border-radius:999px;background:rgba(16,19,22,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;font-size:11px;pointer-events:none}
+.car__vid svg{width:12px;height:12px;fill:currentColor}
+
+@media (max-width:1180px){
+  .srp--side .srp__list{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,2.4vw,36px)}
+  .srp__list .car__a{display:flex;flex-direction:column}
+  .srp__list .car__meta{margin-top:var(--s2)}
+  .srp__list .car__n{font-size:clamp(22px,2.2vw,26px)}
+  .car__desc{-webkit-line-clamp:4;font-size:15px}
+}
+@media (max-width:899px){
+  .srp__body{grid-template-columns:minmax(0,1fr);padding-top:0;gap:var(--s4)}
+  .side{position:static;gap:0;margin:0 calc(var(--pad) * -1);padding:0 var(--pad);border-bottom:1px solid var(--rule)}
+  .side__sum{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);min-height:60px;cursor:pointer;list-style:none;font:500 16px/1 var(--text)}
+  .side__sum::-webkit-details-marker{display:none}
+  .side__sum::after{content:"";width:9px;height:9px;margin:-4px 4px 0 auto;border:solid var(--ink);border-width:0 1.5px 1.5px 0;transform:rotate(45deg);transition:transform .3s var(--ease)}
+  .side__d[open] .side__sum::after{transform:rotate(-135deg);margin-top:4px}
+  .side__f{padding:var(--s1) 0 var(--s4)}
+  .side__help{display:none}
+  .srp--side .srp__list{grid-template-columns:minmax(0,1fr);gap:var(--s5)}
+  .srp__res{margin-bottom:var(--s3)}
+}
+.srp__res .pick{flex:none}
+.srp__res .pick__b{white-space:nowrap}
+
+/* VDP · the video called out on the photograph (hidden while the video itself is in the frame) */
+.viewer__vpill{position:absolute;left:16px;top:16px;z-index:3;display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px 0 14px;border:0;border-radius:999px;background:rgba(16,19,22,.78);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#fff;font:500 15px/1 var(--text);cursor:pointer;transition:background-color .2s,transform .3s var(--ease)}
+.viewer__vpill svg{width:14px;height:14px;fill:currentColor}
+.viewer__vpill:hover{background:var(--act);transform:translateY(-1px)}
+.viewer__vpill:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.viewer__stage:has(.viewer__video:not([hidden])) .viewer__vpill{display:none}
+
+/* VDP · next steps: finance this car | sell us yours (client, 25 Oct) */
+.vcta{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,1.6vw,24px);padding:0 var(--pad) var(--sec)}
+.vcta__p{display:grid;grid-template-rows:auto auto 1fr auto;gap:var(--s2);padding:clamp(32px,3.6vw,56px)}
+.vcta__p--fin{background:var(--paper-2)}
+.vcta__p--sell{background:var(--night);color:var(--on-night)}
+.vcta__p--sell .mono{color:var(--on-night-2)}
+.vcta__h{font:400 clamp(30px,2.8vw,44px)/1.05 var(--disp);letter-spacing:-.02em}
+.vcta__t{max-width:44ch;color:var(--ink-2)}
+.vcta__p--sell .vcta__t{color:var(--on-night-2)}
+.vcta__go{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s1) var(--s4);margin-top:var(--s3)}
+.vcta__go .btn{min-height:56px;border-radius:4px}
+.vcta__go .btn .ic{width:16px;height:16px}
+.vcta__tel{display:grid;gap:2px}
+.vcta__tel span:last-child{font:400 clamp(22px,1.8vw,28px)/1.1 var(--disp)}
+@media (max-width:899px){
+  .vcta{grid-template-columns:minmax(0,1fr);padding:0 0 var(--s6)}
+  .vcta__p{padding:var(--s5) var(--pad)}
+  .vcta__go .btn{flex:1 1 100%}
+  .viewer__vpill{left:12px;top:12px;min-height:40px;font-size:14px}
+}
+@media (max-width:899px){
+  .close--bare .close__act{grid-template-columns:minmax(0,1fr)}   /* price, then the two buttons full width — the row ran past 390 */
+  .close--bare .close__price{margin-bottom:var(--s1)}
+}
+
+/* VDP · two columns down to "More from the showroom": everything on the left, the record card sticky on the right
+   (Alex, 25 Oct: "side card sticky do konca … accordion suzit"). Below 1181px the card drops in after the viewer. */
+.rec__more{display:grid;grid-template-columns:1fr 1fr;gap:var(--s1)}
+.rec__more .btn{min-height:52px;padding:0 16px}
+@media (min-width:1181px){
+  .vdp__cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,400px);gap:var(--s5);padding:0 var(--pad) var(--sec);align-items:start}
+  .vdp__main{min-width:0}
+  .vdp__main>section:not(.trail){padding-left:0;padding-right:0}
+  .vdp__main .vdp__hero{display:block;padding-bottom:var(--s6)}
+  .vdp__main .story__in{grid-template-columns:minmax(0,1fr);gap:var(--s3)}
+  .vdp__main .story__h{position:static}
+  .vdp__main .trail__in{grid-template-columns:minmax(0,1fr);padding:var(--s6) clamp(32px,3.6vw,56px)}
+  .vdp__main .close{display:none}   /* price + Inquire are already in the card beside it */
+  .vdp__main .vcta{padding-bottom:0}
+  .vdp__main .vcta{grid-template-columns:minmax(0,1fr)}
+  .vdp__cols>.rec{position:sticky;top:calc(var(--hd) + var(--s3))}
+}
+@media (max-width:1180px){
+  .vdp__cols{display:flex;flex-direction:column}
+  .vdp__main{display:contents}
+  .vdp__main>*{order:2}
+  .vdp__main>.vdp__hero{order:0;padding-bottom:var(--s4)}
+  .vdp__cols>.rec{order:1;padding:0 var(--pad) var(--s6)}
+}
+@media (max-width:899px){
+  .vdp__cols>.rec{padding:0 var(--pad) var(--s5)}
+}
+/* while the video plays, the photo counter and arrows step aside — they sat on YouTube's own controls */
+.viewer__stage:has(.viewer__video:not([hidden])) :is(.viewer__ui,.viewer__full){display:none}
+/* the side panel's options are checkboxes (Alex, 25 Oct): square, ink when ticked, a drawn check */
+.opt input[type="checkbox"]{border-radius:3px;display:grid;place-items:center}
+.opt input[type="checkbox"]:checked{background:var(--ink);border-color:var(--ink);box-shadow:none}
+.opt input[type="checkbox"]::after{content:"";width:5px;height:9px;margin-top:-2px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) scale(0);transition:transform .15s var(--ease)}
+.opt input[type="checkbox"]:checked::after{transform:rotate(45deg) scale(1)}
+
+/* SRP view toggle — tiles (default) | list (Alex, 25 Oct) */
+.srp__tools{display:flex;align-items:center;gap:var(--s2)}
+.vtog{display:flex;border:1px solid var(--rule);background:#fff}
+.vtog__b{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:0;background:none;font:500 15px/1 var(--text);color:var(--ink-2);cursor:pointer;transition:background-color .15s,color .15s}
+.vtog__b+.vtog__b{border-left:1px solid var(--rule)}
+.vtog__b svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.3}
+.vtog__b:hover{color:var(--ink)}
+.vtog__b[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.vtog__b:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+/* tiles: the homepage card, two across beside the panel (three on very wide screens) */
+.srp--side .srp__tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,2.4vw,36px)}
+.srp__tiles .car__desc{-webkit-line-clamp:3;font-size:15px}
+@media (min-width:1700px){.srp--side .srp__tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:1180px){.vtog{display:none}}   /* below this both views are the same two-across cards */
+@media (max-width:899px){.srp--side .srp__tiles{grid-template-columns:minmax(0,1fr);gap:var(--s5)}}
+/* the video pill, made unmissable (Alex, 25 Oct): light pill, green play disc, on the main photograph */
+.viewer__vpill{left:20px;top:20px;gap:12px;min-height:52px;padding:0 22px 0 6px;background:rgba(255,255,255,.92);color:var(--ink);font:500 16px/1 var(--text);box-shadow:0 10px 28px -12px rgba(16,19,22,.45)}
+.viewer__vpill-i{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--act);color:#fff;transition:transform .3s var(--ease)}
+.viewer__vpill-i svg{width:14px;height:14px;margin-left:2px;fill:currentColor}
+.viewer__vpill:hover{background:#fff;transform:translateY(-1px)}
+.viewer__vpill:hover .viewer__vpill-i{transform:scale(1.08)}
+.viewer__vpill:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media (max-width:899px){.viewer__vpill{left:12px;top:12px;min-height:46px;padding:0 18px 0 5px;font-size:15px}.viewer__vpill-i{width:36px;height:36px}}
+
+/* VDP record card, compact (Alex, 25 Oct: "opens on any screen without fold"): the whole card — title, price,
+   facts, four buttons — fits the viewport beside the photos, so the sticky card never hides its own buttons */
+@media (min-width:1181px){
+  .vdp__cols>.rec .rec__in{padding-top:16px}
+  .vdp__cols>.rec .rec__h{font-size:clamp(24px,1.85vw,30px);line-height:1.08}
+  .vdp__cols>.rec .rec__price{margin-top:14px;padding:10px 0}
+  .vdp__cols>.rec .rec__price b{font-size:clamp(28px,2.2vw,36px)}
+  .vdp__cols>.rec .rec__facts div{grid-template-columns:minmax(6.5em,34%) minmax(0,1fr);gap:12px;padding:8px 0}
+  .vdp__cols>.rec .rec__facts dt{font-size:14px;line-height:1.35}
+  .vdp__cols>.rec .rec__facts dd{font-size:15px;line-height:1.35}
+  .vdp__cols>.rec .rec__go{margin-top:16px;gap:6px}
+  .vdp__cols>.rec .rec__go .btn{min-height:48px;font-size:15px}
+  .vdp__cols>.rec .rec__more{gap:6px}
+  .vdp__cols>.rec .rec__more .btn{min-height:44px}
+  /* last resort on a very short window: the card scrolls inside itself rather than running under the fold */
+  .vdp__cols>.rec{max-height:calc(100svh - var(--hd) - var(--s3) - 16px);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain}
+  .vdp__cols>.rec::-webkit-scrollbar{display:none}
+}
+@media (min-width:1181px) and (max-height:820px){
+  .vdp__cols>.rec .rec__h{font-size:clamp(22px,1.7vw,26px)}
+  .vdp__cols>.rec .rec__price{margin-top:10px;padding:8px 0}
+  .vdp__cols>.rec .rec__price b{font-size:clamp(26px,2vw,30px)}
+  .vdp__cols>.rec .rec__facts div{padding:6px 0}
+  .vdp__cols>.rec .rec__facts dt{font-size:13px}
+  .vdp__cols>.rec .rec__facts dd{font-size:14px}
+  .vdp__cols>.rec .rec__go{margin-top:12px}
+  .vdp__cols>.rec .rec__go .btn{min-height:44px}
+  .vdp__cols>.rec .rec__more .btn{min-height:40px}
+}
+
+/* VDP · "See it in person" is the only accordion now: no number, and it reads as a button (Alex, 25 Oct) */
+.vacc__in{border-top:0}
+.acc--visit{border:1px solid var(--ink);border-radius:6px;background:#fff;transition:box-shadow .3s var(--ease)}
+.acc--visit summary{grid-template-columns:auto minmax(0,1fr) auto;gap:var(--s2);padding:18px 18px 18px 20px;border-radius:6px;transition:background-color .2s}
+.acc--visit summary:hover{background:var(--paper)}
+.acc--visit:hover{box-shadow:0 12px 30px -18px rgba(16,19,22,.4)}
+.acc--visit summary:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.acc__ic{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--paper-2)}
+.acc__ic svg{width:18px;height:18px;fill:none;stroke:var(--ink);stroke-width:1.3}
+.acc__tt{display:grid;gap:4px}
+.acc--visit .acc__t{font-size:clamp(22px,1.8vw,28px)}
+.acc__s{font:400 15px/1.3 var(--text);color:var(--ink-2)}
+.acc--visit .acc__i{background:var(--act);border-color:var(--act);color:#fff}
+.acc--visit summary:hover .acc__i{background:var(--act-hover);border-color:var(--act-hover)}
+.acc--visit[open] .acc__i{background:var(--ink);border-color:var(--ink)}
+.acc--visit .acc__b{margin:0;padding:var(--s1) 20px var(--s4)}
+@media (max-width:899px){.acc--visit summary{padding:14px}.acc__ic{display:none}.acc__s{font-size:14px}}
+
+/* VDP thumbnail strip, larger and fewer (Alex, 25 Oct): video first and singled out, then photos, the last one "+N" */
+.vthumbs{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.vthumbs li:nth-child(n+7){display:none}
+.vthumbs__b{border-radius:4px}
+.vthumbs__b--vid{background:var(--night);box-shadow:inset 0 0 0 2px var(--act)}
+.vthumbs__b--vid img{opacity:.55}
+.vthumbs__b--vid::before{content:"";position:absolute;left:50%;top:44%;z-index:1;width:40px;height:40px;margin:-20px 0 0 -20px;border-radius:50%;background:var(--act) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M5.5 3.5v9l7-4.5z' fill='white'/%3E%3C/svg%3E") 55% 50%/16px no-repeat;transition:transform .25s var(--ease)}
+.vthumbs__b--vid:hover::before{transform:scale(1.1)}
+.vthumbs__b--vid .mono{left:0;right:0;bottom:6px;text-align:center;font-size:12px;letter-spacing:.12em}
+.vthumbs li.is-more{position:relative}
+.vthumbs li.is-more::after{content:attr(data-more);position:absolute;inset:0;display:grid;place-items:center;border-radius:4px;background:rgba(16,19,22,.62);color:#fff;font:400 clamp(20px,1.6vw,26px)/1 var(--disp);pointer-events:none}
+.vchaps__all{padding:0;border:0;background:none;color:var(--ink);cursor:pointer;border-bottom:1px solid var(--rule);padding-bottom:3px}
+.vchaps__all:hover{border-bottom-color:var(--ink)}
+@media (max-width:1180px){.vthumbs{grid-template-columns:repeat(6,minmax(0,1fr))}.vthumbs li:nth-child(n+7){display:none}}
+@media (max-width:899px){.vthumbs{grid-template-columns:repeat(4,minmax(0,1fr))}.vthumbs li:nth-child(n+5){display:none}.vthumbs__b--vid::before{width:32px;height:32px;margin:-16px 0 0 -16px;background-size:13px}}
+@media (max-width:899px){.vthumbs__b--vid .mono{display:none}.vthumbs__b--vid::before{top:50%}}
+
+/* SRP · active filters as subtle pills above the list, × to remove (Alex, 25 Oct) */
+.srp__chips{display:flex;flex-wrap:wrap;gap:8px;margin:calc(var(--s4) * -.5) 0 var(--s4)}
+.srp__chips[hidden]{display:none}
+.chip{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 10px 0 14px;border:1px solid var(--rule);border-radius:999px;background:#fff;font:500 14px/1 var(--text);color:var(--ink);cursor:pointer;transition:border-color .15s,background-color .15s}
+.chip svg{width:14px;height:14px;fill:none;stroke:var(--ink-2);stroke-width:1.5;transition:stroke .15s}
+.chip:hover{border-color:var(--ink)}
+.chip:hover svg{stroke:var(--ink)}
+.chip:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.chip--all{padding:0 6px;border-color:transparent;background:none;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule)}
+.chip--all:hover{border-color:transparent;color:var(--ink)}
+
+/* VDP record card · air back (Alex, 25 Oct: "too squeezed"), scaled by the window's HEIGHT so it still never folds:
+   roomy on a tall screen, tighter only where the height runs out */
+@media (min-width:1181px){
+  .vdp__cols>.rec .rec__in{padding-top:clamp(14px,2vh,24px)}
+  .vdp__cols>.rec .rec__h{font-size:clamp(24px,min(2.2vw,3.3vh),34px);line-height:1.06}
+  .vdp__cols>.rec .rec__price{margin-top:clamp(12px,2vh,24px);padding:clamp(8px,1.3vh,16px) 0}
+  .vdp__cols>.rec .rec__price b{font-size:clamp(28px,min(2.5vw,4vh),42px)}
+  .vdp__cols>.rec .rec__facts div{padding:clamp(7px,1.05vh,13px) 0;gap:var(--s2)}
+  .vdp__cols>.rec .rec__facts dt{font-size:14px;line-height:1.35}
+  .vdp__cols>.rec .rec__facts dd{font-size:15px;line-height:1.38}
+  .vdp__cols>.rec .rec__go{margin-top:clamp(14px,2.3vh,28px);gap:clamp(6px,.8vh,10px)}
+  .vdp__cols>.rec .rec__go .btn{min-height:clamp(44px,5.4vh,56px);font-size:clamp(15px,1.8vh,16px)}
+  .vdp__cols>.rec .rec__more{gap:clamp(6px,.8vh,10px)}
+  .vdp__cols>.rec .rec__more .btn{min-height:clamp(40px,4.8vh,52px)}
+}
+@media (min-width:1181px) and (min-height:861px){
+  .vdp__cols>.rec .rec__facts dt{font-size:15px}
+  .vdp__cols>.rec .rec__facts dd{font-size:16px;line-height:1.4}
+}
