@@ -1,0 +1,296 @@
+<!doctype html>
+<!-- index_experiment_2 — "Tucson Classic, Issue No. 12": the homepage as a 1950s hot-rod magazine.
+     First build under the relaxed Design DNA (design_dna 6b5a074, 25 Oct 2026): no auction-editorial, layered motion allowed, A1/C22 not gating.
+     The magazine is a design conceit. Every vehicle photo is the dealer's own; prices, quotes and cover lines are verbatim or taken from the listings (scraped 2026-10-23).
+     index_v4.html remains the approved homepage. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Issue No. 12 — Tucson Classic Motor Co.</title>
+<meta name="description" content="Vintage and specialty vehicles on Grant Road, Tucson.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F2E8D0">
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Archivo:wdth,wght@62..125,400..900&family=Courier+Prime&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe/000-1400.jpg">
+<link rel="stylesheet" href="vendor/lenis.css">
+<link rel="stylesheet" href="css/experiment-2.css">
+</head>
+<body>
+
+<nav class="tab" aria-label="Primary">
+  <a href="#contents">Contents</a>
+  <a href="inventory_v4.html">Search</a>
+  <a href="#sell">Sell</a>
+  <a href="tel:+15203509332" aria-label="Call 520-350-9332"><span class="tab__long">520-350-9332</span><span aria-hidden="true" class="tab__short">Call</span></a>
+</nav>
+
+<main id="main">
+
+  <!-- THE OPENING — the cover, and the contents page under it. On wide screens with motion allowed the cover turns like a page. -->
+  <div class="opening" data-opening>
+    <div class="opening__stage" data-stage>
+
+      <section class="cover" aria-labelledby="cover-h" data-cover>
+        <p class="cover__strip"><span>Vintage &amp; specialty vehicles</span><span>No. 12</span><span>2540 E. Grant Rd. · Tucson</span></p>
+        <h1 class="cover__mast" id="cover-h"><a href="#top" id="top" aria-label="Tucson Classic Motor Co."><span aria-hidden="true">Tucson Classic</span></a></h1>
+        <p class="cover__motto">We know our cars because we own our cars.</p>
+        <figure class="cover__fig"><img src="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe/000-1400.jpg" alt="1932 Ford Blown Original Henry Steel 3-Window Coupe" width="1400" height="933" fetchpriority="high"><a class="burst burst--cover" href="#contents"><span class="burst__in"><small>On the floor</small>12 cars</span></a></figure>
+        <ul class="cover__lines">
+          <li class="cl cl--1"><a href="#p04"><b>Blown!</b> Original Henry steel ’32 3-Window</a></li>
+          <li class="cl cl--2"><a href="#p06"><b>70 years</b> one family, one ’46 Ford</a></li>
+          <li class="cl cl--3"><a href="#p08"><b>Hells Angels ’69</b> the movie bike</a></li>
+          <li class="cl cl--4"><a href="#p20"><b>Daytona ’54</b> 5th in the BSA sweep</a></li>
+        </ul>
+        <p class="cover__turn" aria-hidden="true">Turn the page ↓</p>
+      </section>
+
+
+      <section class="contents" id="contents" aria-labelledby="toc-h">
+        <header class="contents__head">
+          <h2 class="contents__h" id="toc-h">In this issue</h2>
+          <p class="contents__dek">12 on the floor at 2540 E. Grant Rd. Every one is for sale, and every one we own.</p>
+        </header>
+        <ol class="toc">
+        <li class="toc__i" style="--r:-3deg"><a href="#p4"><span class="toc__pg">04</span><img src="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">Blown!<small>1932 Ford 3‑Window</small></span></a></li>
+        <li class="toc__i" style="--r:2deg"><a href="#p6"><span class="toc__pg">06</span><img src="assets/img/inv/1946-ford-coupe-blown-hh-flathead-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">70 years, one family<small>1946 Ford Coupe</small></span></a></li>
+        <li class="toc__i" style="--r:-1.5deg"><a href="#p8"><span class="toc__pg">08</span><img src="assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">Movie bike<small>1959 Harley-Davidson</small></span></a></li>
+        <li class="toc__i" style="--r:3deg"><a href="#p10"><span class="toc__pg">10</span><img src="assets/img/inv/1983-don-yenko-imsa-camaro-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">Road race<small>1983 Don Yenko IMSA Camaro</small></span></a></li>
+        <li class="toc__i" style="--r:-2.5deg"><a href="#p12"><span class="toc__pg">12</span><img src="assets/img/inv/1912-marsh-metz-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">1912!<small>1912 Marsh Metz</small></span></a></li>
+        <li class="toc__i" style="--r:1.5deg"><a href="#p14"><span class="toc__pg">14</span><img src="assets/img/inv/1954-hillegass-sprint-car-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">URC winner<small>1954 Hillegass Sprint Car</small></span></a></li>
+        <li class="toc__i" style="--r:-3deg"><a href="#p16"><span class="toc__pg">16</span><img src="assets/img/inv/1956-oldsmobile-88-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">28k miles<small>1956 Oldsmobile 88</small></span></a></li>
+        <li class="toc__i" style="--r:2deg"><a href="#p18"><span class="toc__pg">18</span><img src="assets/img/inv/1973-lincoln-town-coupe-coming-soon-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">25,047 miles<small>1973 Lincoln Town Coupe</small></span></a></li>
+        <li class="toc__i" style="--r:-1.5deg"><a href="#p20"><span class="toc__pg">20</span><img src="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">Daytona ’54<small>1954 BSA A7 Shooting Star</small></span></a></li>
+        <li class="toc__i" style="--r:3deg"><a href="#p22"><span class="toc__pg">22</span><img src="assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">Pace car<small>1995 Corvette Indy 500</small></span></a></li>
+        <li class="toc__i" style="--r:-2.5deg"><a href="#p24"><span class="toc__pg">24</span><img src="assets/img/inv/1963-ford-falcon-coming-soon-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">Tucson Yellow<small>1963 Ford Falcon Futura</small></span></a></li>
+        <li class="toc__i" style="--r:1.5deg"><a href="#p26"><span class="toc__pg">26</span><img src="assets/img/inv/2005-cadillac-xlr-with-32k-miles-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><span class="toc__t">32k miles<small>2005 Cadillac XLR</small></span></a></li>
+        </ol>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 03</span></p>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- THE FEATURES — one spread per vehicle; on wide screens each page lands on the last -->
+  <section class="features" aria-label="Features">
+    <article class="spread spread--a" id="p4" aria-labelledby="h4" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe/000-1400.jpg" alt="1932 Ford BLOWN Original Henry Steel 3 window Coupe" width="1400" height="933" loading="eager" decoding="async"><img class="spread__inset" src="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-f1-960.jpg" alt="" width="960" height="640" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">Blown!</p>
+          <h3 class="spread__h" id="h4"><span class="spread__y">1932</span> Ford 3‑Window</h3>
+          <blockquote class="spread__q"><p>“Real deal Hot rod that is lots of fun to drive, turns heads wherever it goes.”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_1932-ford-blown-original-henry-steel-3-window-coupe.html">See this car</a><button class="btn btn--ink" type="button" data-yt="y2H7C5YypzU" data-title="1932 Ford BLOWN Original Henry Steel 3 window Coupe">▶ Walk-around film</button></p>
+        </div>
+        <a class="burst" href="vehicle_v4_1932-ford-blown-original-henry-steel-3-window-coupe.html" aria-label="1932 Ford BLOWN Original Henry Steel 3 window Coupe, $59,500"><span class="burst__in"><small>Only</small>$59,500</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 04</span></p>
+      </div>
+    </article>
+    <article class="spread spread--b" id="p6" aria-labelledby="h6" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/1946-ford-coupe-blown-hh-flathead/000-1400.jpg" alt="1946 Ford Coupe Blown H&amp;H Flathead" width="1400" height="933" loading="lazy" decoding="async"><img class="spread__inset" src="assets/img/inv/1946-ford-coupe-blown-hh-flathead-f1-960.jpg" alt="" width="960" height="640" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">70 years, one family</p>
+          <h3 class="spread__h" id="h6"><span class="spread__y">1946</span> Ford Coupe</h3>
+          <blockquote class="spread__q"><p>“This car remained with the same family for over 70 years!”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_1946-ford-coupe-blown-hh-flathead.html">See this car</a><button class="btn btn--ink" type="button" data-yt="m2epaDUDk08" data-title="1946 Ford Coupe Blown H&amp;H Flathead">▶ Walk-around film</button></p>
+        </div>
+        <a class="burst" href="vehicle_v4_1946-ford-coupe-blown-hh-flathead.html" aria-label="1946 Ford Coupe Blown H&amp;H Flathead, $69,500"><span class="burst__in"><small>Only</small>$69,500</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 06</span></p>
+      </div>
+    </article>
+    <article class="spread spread--c" id="p8" aria-labelledby="h8" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/1959-harley-davidson-hells-angels-69-movie-bike/000-1400.jpg" alt="1959 Harley Davidson “Hells Angels 69” Movie Bike" width="1400" height="933" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">Movie bike</p>
+          <h3 class="spread__h" id="h8"><span class="spread__y">1959</span> Harley-Davidson</h3>
+          <blockquote class="spread__q"><p>“Built to replicate the Terry the Tramp’s bike from the movie ‘Hell Angels ’69’”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_1959-harley-davidson-hells-angels-69-movie-bike.html">See this bike</a><button class="btn btn--ink" type="button" data-yt="fSCdwlR9sgY" data-title="1959 Harley Davidson “Hells Angels 69” Movie Bike">▶ Walk-around film</button></p>
+        </div>
+        <a class="burst" href="vehicle_v4_1959-harley-davidson-hells-angels-69-movie-bike.html" aria-label="1959 Harley Davidson “Hells Angels 69” Movie Bike, $39,900"><span class="burst__in"><small>Only</small>$39,900</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 08</span></p>
+      </div>
+    </article>
+    <article class="spread spread--a" id="p10" aria-labelledby="h10" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/1983-don-yenko-imsa-camaro-960.jpg" alt="1983 Don Yenko IMSA Camaro" width="1400" height="933" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">Road race</p>
+          <h3 class="spread__h" id="h10"><span class="spread__y">1983</span> Don Yenko IMSA Camaro</h3>
+          <blockquote class="spread__q"><p>“This was the first of several road race cars that Dillon would build.”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_1983-don-yenko-imsa-camaro.html">See this car</a><button class="btn btn--ink" type="button" data-yt="zaV58Sem8Yc" data-title="1983 Don Yenko IMSA Camaro">▶ Walk-around film</button></p>
+        </div>
+        <a class="burst" href="vehicle_v4_1983-don-yenko-imsa-camaro.html" aria-label="1983 Don Yenko IMSA Camaro, $49,500"><span class="burst__in"><small>Only</small>$49,500</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 10</span></p>
+      </div>
+    </article>
+    <article class="spread spread--b" id="p12" aria-labelledby="h12" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/1912-marsh-metz/000-1400.jpg" alt="1912 Marsh Metz" width="1400" height="933" loading="lazy" decoding="async"><img class="spread__inset" src="assets/img/inv/1912-marsh-metz-f1-960.jpg" alt="" width="960" height="640" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">1912!</p>
+          <h3 class="spread__h" id="h12"><span class="spread__y">1912</span> Marsh Metz</h3>
+          <blockquote class="spread__q"><p>“Its high-quality offerings form a key part of the history of motorcycling in America.”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_1912-marsh-metz.html">See this bike</a></p>
+        </div>
+        <a class="burst" href="vehicle_v4_1912-marsh-metz.html" aria-label="1912 Marsh Metz, $115,000"><span class="burst__in"><small>Only</small>$115,000</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 12</span></p>
+      </div>
+    </article>
+    <article class="spread spread--c" id="p14" aria-labelledby="h14" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/1954-hillegass-sprint-car/000-1400.jpg" alt="1954 Hillegass Sprint Car" width="1400" height="933" loading="lazy" decoding="async"><img class="spread__inset" src="assets/img/inv/1954-hillegass-sprint-car-f1-960.jpg" alt="" width="960" height="640" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">URC winner</p>
+          <h3 class="spread__h" id="h14"><span class="spread__y">1954</span> Hillegass Sprint Car</h3>
+          <blockquote class="spread__q"><p>“#19 was built in 1954 for Dixon Sawin and raced successfully in the URC until 1972.”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_1954-hillegass-sprint-car.html">See this car</a></p>
+        </div>
+        <a class="burst" href="vehicle_v4_1954-hillegass-sprint-car.html" aria-label="1954 Hillegass Sprint Car, $39,500"><span class="burst__in"><small>Only</small>$39,500</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 14</span></p>
+      </div>
+    </article>
+    <article class="spread spread--a" id="p16" aria-labelledby="h16" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/olds/000-1400.jpg" alt="1956 Oldsmobile 88 w/ 28k original miles" width="1400" height="933" loading="lazy" decoding="async"><img class="spread__inset" src="assets/img/inv/1956-oldsmobile-88-f1-960.jpg" alt="" width="960" height="640" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">28k miles</p>
+          <h3 class="spread__h" id="h16"><span class="spread__y">1956</span> Oldsmobile 88</h3>
+          <blockquote class="spread__q"><p>“Arguably the most handsome car to come out of the GM design studios since the war”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_1956-oldsmobile-88.html">See this car</a><button class="btn btn--ink" type="button" data-yt="g2tWGIZO8cU" data-title="1956 Oldsmobile 88 w/ 28k original miles">▶ Walk-around film</button></p>
+        </div>
+        <a class="burst" href="vehicle_v4_1956-oldsmobile-88.html" aria-label="1956 Oldsmobile 88 w/ 28k original miles, $39,900"><span class="burst__in"><small>Only</small>$39,900</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 16</span></p>
+      </div>
+    </article>
+    <article class="spread spread--b" id="p18" aria-labelledby="h18" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/1973-lincoln-town-coupe-coming-soon/000-1400.jpg" alt="1973 Lincoln Town Coupe w/ 25k Miles" width="1400" height="933" loading="lazy" decoding="async"><img class="spread__inset" src="assets/img/inv/1973-lincoln-town-coupe-coming-soon-f1-960.jpg" alt="" width="960" height="640" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">25,047 miles</p>
+          <h3 class="spread__h" id="h18"><span class="spread__y">1973</span> Lincoln Town Coupe</h3>
+          <blockquote class="spread__q"><p>“…only 25,047 miles since new.”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_1973-lincoln-town-coupe-coming-soon.html">See this car</a><button class="btn btn--ink" type="button" data-yt="uxCrvYlgxFY" data-title="1973 Lincoln Town Coupe w/ 25k Miles">▶ Walk-around film</button></p>
+        </div>
+        <a class="burst" href="vehicle_v4_1973-lincoln-town-coupe-coming-soon.html" aria-label="1973 Lincoln Town Coupe w/ 25k Miles, $35,000"><span class="burst__in"><small>Only</small>$35,000</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 18</span></p>
+      </div>
+    </article>
+    <article class="spread spread--c" id="p20" aria-labelledby="h20" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike/000-1400.jpg" alt="1954 BSA A7 Shooting Star Daytona Race Bike" width="1400" height="933" loading="lazy" decoding="async"><img class="spread__inset" src="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-f1-960.jpg" alt="" width="960" height="640" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">Daytona ’54</p>
+          <h3 class="spread__h" id="h20"><span class="spread__y">1954</span> BSA A7 Shooting Star</h3>
+          <blockquote class="spread__q"><p>“This bike placed 5th in BSA’s 1st-5th sweep of the 1954 Daytona 200 race”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_1954-bsa-a7-shooting-star-daytona-race-bike.html">See this bike</a></p>
+        </div>
+        <a class="burst" href="vehicle_v4_1954-bsa-a7-shooting-star-daytona-race-bike.html" aria-label="1954 BSA A7 Shooting Star Daytona Race Bike, $44,500"><span class="burst__in"><small>Only</small>$44,500</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 20</span></p>
+      </div>
+    </article>
+    <article class="spread spread--a" id="p22" aria-labelledby="h22" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition/000-1400.jpg" alt="1995 Corvette Indianapolis 500 Pace Car Edition" width="1400" height="933" loading="lazy" decoding="async"><img class="spread__inset" src="assets/img/inv/1995-corvette-indianapolis-500-pace-car-edition-f1-960.jpg" alt="" width="960" height="640" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">Pace car</p>
+          <h3 class="spread__h" id="h22"><span class="spread__y">1995</span> Corvette Indy 500</h3>
+          <blockquote class="spread__q"><p>“The original, bold Indy 500 door graphics and red accent pinstripes remain perfectly intact”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_1995-corvette-indianapolis-500-pace-car-edition.html">See this car</a><button class="btn btn--ink" type="button" data-yt="R6P4hHTd7u8" data-title="1995 Corvette Indianapolis 500 Pace Car Edition">▶ Walk-around film</button></p>
+        </div>
+        <a class="burst" href="vehicle_v4_1995-corvette-indianapolis-500-pace-car-edition.html" aria-label="1995 Corvette Indianapolis 500 Pace Car Edition, $32,500"><span class="burst__in"><small>Only</small>$32,500</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 22</span></p>
+      </div>
+    </article>
+    <article class="spread spread--b" id="p24" aria-labelledby="h24" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/1963-ford-falcon-coming-soon/000-1400.jpg" alt="1963 Ford Falcon Futura 260 V8" width="1400" height="933" loading="lazy" decoding="async"><img class="spread__inset" src="assets/img/inv/1963-ford-falcon-coming-soon-f1-960.jpg" alt="" width="960" height="640" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">Tucson Yellow</p>
+          <h3 class="spread__h" id="h24"><span class="spread__y">1963</span> Ford Falcon Futura</h3>
+          <blockquote class="spread__q"><p>“It was professionally repainted in its original color of ‘Tucson Yellow’”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_1963-ford-falcon-coming-soon.html">See this car</a><button class="btn btn--ink" type="button" data-yt="1mdxe1LPKBI" data-title="1963 Ford Falcon Futura 260 V8">▶ Walk-around film</button></p>
+        </div>
+        <a class="burst" href="vehicle_v4_1963-ford-falcon-coming-soon.html" aria-label="1963 Ford Falcon Futura 260 V8, $16,500"><span class="burst__in"><small>Only</small>$16,500</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 24</span></p>
+      </div>
+    </article>
+    <article class="spread spread--c" id="p26" aria-labelledby="h26" data-spread>
+      <div class="spread__page">
+        <figure class="spread__fig"><img class="spread__img" src="assets/img/inv/2005-cadillac-xlr-with-32k-miles/000-1400.jpg" alt="2005 Cadillac XLR with 32k Miles" width="1400" height="933" loading="lazy" decoding="async"><img class="spread__inset" src="assets/img/inv/2005-cadillac-xlr-with-32k-miles-f1-960.jpg" alt="" width="960" height="640" loading="lazy" decoding="async"></figure>
+        <div class="spread__copy">
+          <p class="spread__shout" aria-hidden="true">32k miles</p>
+          <h3 class="spread__h" id="h26"><span class="spread__y">2005</span> Cadillac XLR</h3>
+          <blockquote class="spread__q"><p>“Always garaged, zero rust, no accidents, and smoke-free.”</p></blockquote>
+          <p class="spread__go"><a class="btn btn--red" href="vehicle_v4_2005-cadillac-xlr-with-32k-miles.html">See this car</a><button class="btn btn--ink" type="button" data-yt="cz9KWNa0IdI" data-title="2005 Cadillac XLR with 32k Miles">▶ Walk-around film</button></p>
+        </div>
+        <a class="burst" href="vehicle_v4_2005-cadillac-xlr-with-32k-miles.html" aria-label="2005 Cadillac XLR with 32k Miles, $29,500"><span class="burst__in"><small>Only</small>$29,500</span></a>
+        <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 26</span></p>
+      </div>
+    </article>
+  </section>
+
+  <!-- THE AD — the dealer's own words as a full-page ad, with a coupon to cut -->
+  <section class="adpage" id="sell" aria-labelledby="sell-h" data-adpage>
+    <p class="adpage__shout" data-shout>Don’t buy that plastic junk, own a real Hot Rod!</p>
+    <p class="adpage__src">— from our listing for the 1932 Ford 3-Window</p>
+    <div class="coupon" data-coupon>
+      <span class="coupon__cut" aria-hidden="true" data-scissors>✂</span>
+      <h2 class="coupon__h" id="sell-h">Selling a classic?</h2>
+      <p class="coupon__p">We buy classic and special-interest vehicles. Over 30 years experience in the Classic Car industry.</p>
+      <p class="coupon__go"><a class="btn btn--red" href="https://tucsonclassics.com/sell-your-car/">Sell your vehicle</a><a class="btn btn--ink" href="tel:+15203509332">Call 520-350-9332</a></p>
+    </div>
+    <p class="folio" aria-hidden="true"><span>Advertisement</span><span>p. 28</span></p>
+  </section>
+
+  <!-- THE CLASSIFIEDS — the whole floor, small-ad style -->
+  <section class="classifieds" aria-labelledby="cls-h">
+    <header class="classifieds__head">
+      <h2 class="classifieds__h" id="cls-h">Classifieds</h2>
+      <a class="btn btn--ink" href="inventory_v4.html">Search the full inventory</a>
+    </header>
+    <ul class="ads">
+        <li class="ad ad--box"><a href="vehicle_v4_1932-ford-blown-original-henry-steel-3-window-coupe.html"><img src="assets/img/inv/1932-ford-blown-original-henry-steel-3-window-coupe-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><b>1932 Ford 3‑Window</b><span>Blown.</span><em>$59,500</em><u>See it →</u></a></li>
+        <li class="ad"><a href="vehicle_v4_1946-ford-coupe-blown-hh-flathead.html"><b>1946 Ford Coupe</b><span>70 years, one family.</span><em>$69,500</em><u>See it →</u></a></li>
+        <li class="ad"><a href="vehicle_v4_1959-harley-davidson-hells-angels-69-movie-bike.html"><b>1959 Harley-Davidson</b><span>Movie bike.</span><em>$39,900</em><u>See it →</u></a></li>
+        <li class="ad"><a href="vehicle_v4_1983-don-yenko-imsa-camaro.html"><b>1983 Don Yenko IMSA Camaro</b><span>Road race.</span><em>$49,500</em><u>See it →</u></a></li>
+        <li class="ad ad--box"><a href="vehicle_v4_1912-marsh-metz.html"><img src="assets/img/inv/1912-marsh-metz-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><b>1912 Marsh Metz</b><span>1912.</span><em>$115,000</em><u>See it →</u></a></li>
+        <li class="ad"><a href="vehicle_v4_1954-hillegass-sprint-car.html"><b>1954 Hillegass Sprint Car</b><span>URC winner.</span><em>$39,500</em><u>See it →</u></a></li>
+        <li class="ad"><a href="vehicle_v4_1956-oldsmobile-88.html"><b>1956 Oldsmobile 88</b><span>28k miles.</span><em>$39,900</em><u>See it →</u></a></li>
+        <li class="ad"><a href="vehicle_v4_1973-lincoln-town-coupe-coming-soon.html"><b>1973 Lincoln Town Coupe</b><span>25,047 miles.</span><em>$35,000</em><u>See it →</u></a></li>
+        <li class="ad ad--box"><a href="vehicle_v4_1954-bsa-a7-shooting-star-daytona-race-bike.html"><img src="assets/img/inv/1954-bsa-a7-shooting-star-daytona-race-bike-560.jpg" alt="" width="560" height="373" loading="lazy" decoding="async"><b>1954 BSA A7 Shooting Star</b><span>Daytona ’54.</span><em>$44,500</em><u>See it →</u></a></li>
+        <li class="ad"><a href="vehicle_v4_1995-corvette-indianapolis-500-pace-car-edition.html"><b>1995 Corvette Indy 500</b><span>Pace car.</span><em>$32,500</em><u>See it →</u></a></li>
+        <li class="ad"><a href="vehicle_v4_1963-ford-falcon-coming-soon.html"><b>1963 Ford Falcon Futura</b><span>Tucson Yellow.</span><em>$16,500</em><u>See it →</u></a></li>
+        <li class="ad"><a href="vehicle_v4_2005-cadillac-xlr-with-32k-miles.html"><b>2005 Cadillac XLR</b><span>32k miles.</span><em>$29,500</em><u>See it →</u></a></li>
+    </ul>
+    <p class="folio" aria-hidden="true"><span>Tucson Classic · No. 12</span><span>p. 29</span></p>
+  </section>
+
+</main>
+
+<footer class="back">
+  <p class="back__big">2540 E. Grant Rd.<br>Tucson, AZ 85716</p>
+  <div class="back__cols">
+    <p>Showroom by appointment only.<br><a href="https://www.google.com/maps/dir/?api=1&amp;destination=2540+E+Grant+Rd,+Tucson,+AZ+85716">Get directions</a></p>
+    <p><a href="tel:+15203509332">520-350-9332</a><br><a href="mailto:Info@TucsonClassics.com">Info@TucsonClassics.com</a></p>
+    <p><a href="inventory_v4.html">Current inventory</a><br><a href="https://tucsonclassics.com/sold-vehicles/">Sold inventory</a><br><a href="https://tucsonclassics.com/financing/">Financing</a></p>
+  </div>
+  <p class="back__legal"><span>© 2026 Tucson Classic Motor Co. The magazine is a design conceit; vehicles, prices and quotes are from our listings.</span><a href="https://allautonetwork.com/">Powered by All Auto Network</a></p>
+</footer>
+
+<div class="projector" data-projector hidden>
+  <div class="projector__in" role="dialog" aria-modal="true" aria-label="Walk-around video">
+    <button class="projector__x" type="button" data-projector-close>Close</button>
+    <div class="projector__frame" data-projector-frame></div>
+  </div>
+</div>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script src="js/experiment-2.js"></script>
+</body>
+</html>
